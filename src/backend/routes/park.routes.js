@@ -82,8 +82,8 @@ parksRouter.post('/', function addAPark(req, res, next) {
     err.status = 400;
     return next(err);
   }
-  let theJobCreated = new Job({company: req.body.company, link: req.body.link, notes: req.body.notes, createTime: new Date()});
-  theJobCreated.save()
+  let theParkCreated = new Park({name: req.body.name, street: req.body.street, city: req.body.city, state: req.body.street, zipcode: req.body.zipcode, description: req.body.description, openHour: req.body.openHour, closeHour: req.body.closeHour, popularity: req.body.popularity});
+  theParkCreated.save()
   .then(function sendBackTheResponse(data) {
     res.json(data);
   })
@@ -96,26 +96,26 @@ parksRouter.post('/', function addAPark(req, res, next) {
 });
 
 /**
-* finds the job with the id matching the argument passed in req
+* finds the park with the id matching the argument passed in req
 * @param  {Object}   req  the request object received from the frontend
 * @param  {Object}   res  the response object to return to the frontend
 * @param  {Function} next the middleware to proceed to next, if called
 * @return {Void}
 */
-jobsRouter.delete('/:id', function deleteAJob(req, res, next) {
-  Job.findById({_id: req.params.id})
-  .then(function removeTheJob(job) {
+parksRouter.delete('/:id', function deleteAPark(req, res, next) {
+  Park.findById({_id: req.params.id})
+  .then(function removeThePark(job) {
     if (!job) {
-      let err = new Error('job to delete not found');
+      let err = new Error('park to delete not found');
       err.status = 404;
       return next(err);
     }
-    job.remove();
-    res.json(job);
+    park.remove();
+    res.json(park);
   })
   .catch(function handleIssues(err) {
     console.error(err);
-    let ourError = new Error('There was an error finding the job');
+    let ourError = new Error('There was an error finding the park');
     ourError.status = err.status;
     return next(ourError);
   });
