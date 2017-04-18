@@ -33,34 +33,34 @@
     "closingHours":""
   },
   {
-    "Name":"Shaw Dog Park",
-    "address":"1673",
-    "street":"11th St NW",
+    "Name":"S Street Dog Park",
+    "address":"",
+    "street":"17th & S Sts., NW",
     "city":"Washington",
     "state":"DC",
-    "zip":"20001",
+    "zip":"20009",
     "description":,
     "openHours":"7am",
-    "closingHours":"10pm"
+    "closingHours":"8pm"
   },
   {
-    "Name":"Lansburgh Dog Park",
-    "address":"95",
-    "street":"M St SW",
-    "city":"Washington",
-    "state":"DC",
-    "zip":"20024",
-    "description":"",
-    "openHours":"7am",
-    "closingHours":"7pm"
-  },
-  {
-    "Name":"Kingsman Field Dog Park",
+    "Name":"Newark Street Dog Park",
     "address":"",
-    "street":"D St NE",
+    "street":"Newark St NW and 39th St NW",
     "city":"Washington",
     "state":"DC",
-    "zip":"20002",
+    "zip":"20008",
+    "description":"",
+    "openHours":"",
+    "closingHours":""
+  },
+  {
+    "Name":"Columbia Heights Dog Park",
+    "address":"1150",
+    "street":"Park Rd NW",
+    "city":"Washington",
+    "state":"DC",
+    "zip":"20010",
     "description":"",
     "openHours":"",
     "closingHours":""
