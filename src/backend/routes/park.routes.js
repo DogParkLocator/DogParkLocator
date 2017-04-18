@@ -89,7 +89,7 @@ parksRouter.post('/', function addAPark(req, res, next) {
   })
   .catch(function handleIssues(err) {
     console.error(err);
-    let ourError = new Error('unable to save job');
+    let ourError = new Error('unable to save park');
     ourError.status = 422;
     next(ourError);
   });
@@ -104,8 +104,8 @@ parksRouter.post('/', function addAPark(req, res, next) {
 */
 parksRouter.delete('/:id', function deleteAPark(req, res, next) {
   Park.findById({_id: req.params.id})
-  .then(function removeThePark(job) {
-    if (!job) {
+  .then(function removeThePark(park) {
+    if (!park) {
       let err = new Error('park to delete not found');
       err.status = 404;
       return next(err);
@@ -121,4 +121,4 @@ parksRouter.delete('/:id', function deleteAPark(req, res, next) {
   });
 });
 
-module.exports = jobsRouter;
+module.exports = parksRouter;
