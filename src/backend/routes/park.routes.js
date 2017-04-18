@@ -78,6 +78,7 @@ parksRouter.get('/', function getAllParks(req, res, next) {
 */
 parksRouter.post('/', function addAPark(req, res, next) {
   if(!req.body.name || !req.body.street || !req.body.city || !req.body.state || !req.body.zipcode) {
+    console.log("not all required fields have been provided", req);
     let err = new Error('You must provide a name and complete address');
     err.status = 400;
     return next(err);

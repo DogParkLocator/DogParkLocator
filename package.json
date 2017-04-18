@@ -2,14 +2,13 @@
   "name": "dogparklocator",
   "version": "1.0.0",
   "description": "webpsite application that helps dog owners find dog parks",
-  "main": "app.js",
+  "main": "src/backend/app.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
     "angular": "^1.6.4",
-    "angular-ui-router": "^0.4.2",
-    "body-parser": "^1.17.1",
+    "angular-ui-router": "^0.4.2", "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "mongodb": "^2.2.26",
     "mongoose": "^4.9.5"
