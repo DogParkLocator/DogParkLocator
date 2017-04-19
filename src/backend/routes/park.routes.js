@@ -16,7 +16,7 @@ parksRouter.get('/:id', function getAPark(req, res, next) {
       err.status = 404;
       return next(err);
     }
-    res.json({id: park._id, name: park.name, location: park.locaation, description: park.description, hours: park.hours, popularity: park.popularity});
+    res.json({id: park._id, name: park.name, street: park.street, city: park.city, state: park.state, zipcode: park.zipcode, description: park.description, hours: park.hours, popularity: park.popularity});
   })
   .catch(function handleIssues(err) {
     console.error(err);
