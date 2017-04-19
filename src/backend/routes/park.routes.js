@@ -12,7 +12,7 @@ parksRouter.get('/:id', function getAPark(req, res, next) {
   Park.findById(req.params.id)
   .then(function returnThePark(park) {
     if (!park) {
-      let err = new Error('job not found');
+      let err = new Error('park not found');
       err.status = 404;
       return next(err);
     }
