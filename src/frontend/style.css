@@ -1,0 +1,11 @@
+.page-header {
+  padding: 1em;
+  background: url(/img/dog-header.jpg);
+  background-size: cover; }
+  .page-header h1 {
+    color: #FFFFFF; }
+  .page-header h2 {
+    color: #FFFFFF;
+    font-size: 1em; }
+
+/*# sourceMappingURL=style.css.map */
