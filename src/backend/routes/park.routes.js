@@ -57,7 +57,7 @@ parksRouter.get('/', function getAllParks(req, res, next) {
         return next(err);
       }
       res.json(allParks.map(function(park) {
-        return {id: park._id, name: park.name, location: park.locaation, description: park.description, hours: park.hours, popularity: park.popularity};
+        return {id: park._id, name: park.name, street: park.street, city: park.city, state: park.state, zipcode: park.zipcode, description: park.description, openHour: park.openHour, closeHour: park.closeHour, popularity: park.popularity};
       }));
     })
     .catch(function handleIssues(err) {
@@ -82,7 +82,7 @@ parksRouter.post('/', function addAPark(req, res, next) {
     err.status = 400;
     return next(err);
   }
-  let theParkCreated = new Park({name: req.body.name, location: {street: req.body.street, city: req.body.city, state: req.body.state, zipcode: req.body.zipcode, latitude: req.body.latitude, longitude: req.body.longitude}, description: req.body.description, hours: {openHour: req.body.openHour, closeHour: req.body.closeHour}, popularity: req.body.popularity});
+  let theParkCreated = new Park({name: req.body.name, street: req.body.street, city: req.body.city, state: req.body.state, zipcode: req.body.zipcode, latitude: req.body.latitude, longitude: req.body.longitude, description: req.body.description, openHour: req.body.openHour, closeHour: req.body.closeHour, popularity: req.body.popularity});
   theParkCreated.save()
   .then(function sendBackTheResponse(data) {
     res.json(data);
