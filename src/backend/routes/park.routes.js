@@ -111,7 +111,7 @@ parksRouter.delete('/:id', function deleteAPark(req, res, next) {
       return next(ourError);
     }
     park.remove()
-    .then(function deletionSuccess(res) {
+    .then(function deletionSuccess() {
       res.json(park);
     })
     .catch(function handleError(err) {
