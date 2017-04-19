@@ -3,6 +3,3 @@ node_modules/
 node-js-getting-started/
 .sass-cache/
 build/
-src/frontend/dbtest.html
-src/frontend/js/api.js
-src/frontend/js/view.js
