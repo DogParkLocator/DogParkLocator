@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,YAAa;EACX,OAAO,EAAE,GAAG;EACZ,UAAU,EAAE,wBAAwB;EACpC,eAAe,EAAE,KAAK;EACtB,eAAG;IACD,KAAK,ECLS,OAAO;EDOvB,eAAE;IACA,KAAK,ECRS,OAAO;IDSrB,SAAS,EAAE,GAAG",
-"sources": ["sass/mobile-header.scss","sass/variables.scss"],
-"names": [],
-"file": "style.css"
-}
