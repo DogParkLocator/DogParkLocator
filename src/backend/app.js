@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 require('./database-setup.js');
 
 let app = express();
-app.use(express.static(__dirname + '/../frontend/'));
+app.use(express.static(__dirname + '/../../build/'));
 app.use(bodyParser.json());
 
 
