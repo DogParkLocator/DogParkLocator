@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang='en' ng-app='parks'>
 <head>
   <meta charset="utf-8">
   <title>Find The Bark</title>
@@ -37,24 +37,31 @@
       </form>
 
     </main>
-    <main class='parks-list panel panel-default'>
-      <header class='panel-heading'>
-        {{ expression for park name}}
-        {{ expression for park address}}
-      </header>
-      <section class='panel-body'>
-        <p>Description: {{ expression for description of park }}</p>
-        <p>Opens: {{ expression opening time }}</p>
-        <p>Closes: {{ expression for closing time }}</p>
-        <p>Popularity {{ expression for popularity }}</p>
-        <p>Review: {{ expression for reviews }}</p>
-      </section>
+
+    <main class='parks-list panel panel-default' ng-controller='ParksController as parksCtrl'>
+      <article ng-repeat='park in parksCtrl.parkList'>
+        <header class='panel-heading'>
+          {{park.name}}
+          {{ expression for park address}}
+        </header>
+        <section class='panel-body'>
+          <p>Description: {{ expression for description of park }}</p>
+          <p>Opens: {{ expression opening time }}</p>
+          <p>Closes: {{ expression for closing time }}</p>
+          <p>Popularity {{ expression for popularity }}</p>
+          <p>Review: {{ expression for reviews }}</p>
+        </section>
+      </article>
     </main>
 
 
     <footer>
       <p>&copy 2017 Brian Fiala, Alex Britcliffe, and Ryan Cronin</p>
     </footer>
-    <script src=''></script>
+    <script src='angular.js'></script>
+    <script src='/js/app.js'></script>
+    <!-- <script src='/js/park.module.js'></script>
+    <script src='/js/park.controller.js'></script>
+    <script src='/js/park.service.js'></script> -->
   </body>
   </html>
