@@ -7,6 +7,8 @@ let parkSchema = mongoose.Schema({
   city: String,
   state: String,
   zipcode: String,
+  latitude: String,
+  longitude: String,
   description: String,
   openHour: String,
   closeHour: String,
