@@ -11,16 +11,32 @@
     vm.parks = [];
     vm.park = {};
 
-    vm.getAllParks = function getAllParks() {
-      ParksService.getAllParks()
-      .then(function handleResponse(response){
-        vm.parks = response;
+    ParksService.getAllParks()
+    .then(function addDataOnScope(parks) {
+      vm.parks = parks;
+    })
+    .catch(function handleError(err){
+      console.warn(err);
+    });
+
+    function getParkById(id){
+      if (typeof(id) !== 'string' || id.length === 0) {
+        return; // should add error log or return error
+      }
+      ParksService.getParkById(id)
+      .then(function addDataOnScope(park) {
+        vm.park = park;
       })
       .catch(function handleError(err){
-        console.warn(err);
+        if (err.status === 404) {
+          vm.hasError = true;
+          vm.errorMessage = 'Could not find the park with that id';
+        }
+        else {
+          vm.hasError = true;
+          vm.errorMessage = 'Unknown error from server';
+        }
       });
-    };
-
-    vm.getAllParks();
+    }
   }
 }());
