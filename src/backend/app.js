@@ -7,7 +7,7 @@ let app = express();
 app.set('port', (process.env.PORT || 4000));
 app.use(express.static(__dirname + '/../../build/'));
 app.use(bodyParser.json());
-app.use('/api/parks', require('./routes/park.routes.js'));
+app.use('/dog-parks', require('./routes/park.routes.js'));
 app.use(require('./middleware/error-handler.middleware.js'));
 app.listen(app.get('port'), function doSomethingOnceServerIsUp(err) {
   if(err) {
