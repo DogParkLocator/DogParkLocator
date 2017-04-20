@@ -1,62 +1,62 @@
 [
   {
-    "name":"Shaw Dog Park",
-    "street":"1673 11th St NW",
-    "city":"Washington",
-    "state":"DC",
-    "zip":"20001",
-    "description":,
-    "openHours":"7am",
-    "closingHours":"10pm"
+    "name": "Shaw Dog Park",
+    "street": "1673 11th St NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20001",
+    "description": "",
+    "openHours": "7am",
+    "closingHours": "10pm"
   },
   {
-    "name":"Lansburgh Dog Park",
-    "street":"95 M St SW",
-    "city":"Washington",
-    "state":"DC",
-    "zip":"20024",
-    "description":"",
-    "openHours":"7am",
-    "closingHours":"7pm"
+    "name": "Lansburgh Dog Park",
+    "street": "95 M St SW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20024",
+    "description": "",
+    "openHours": "7am",
+    "closingHours": "7pm"
   },
   {
-    "name":"Kingsman Field Dog Park",
-    "street":"D St NE",
-    "city":"Washington",
-    "state":"DC",
-    "zip":"20002",
-    "description":"",
-    "openHours":"",
-    "closingHours":""
+    "name": "Kingsman Field Dog Park",
+    "street": "D St NE",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20002",
+    "description": "",
+    "openHours": "",
+    "closingHours": ""
   },
   {
-    "name":"S Street Dog Park",
-    "street":"17th & S Sts., NW",
-    "city":"Washington",
-    "state":"DC",
-    "zip":"20009",
-    "description":,
-    "openHours":"7am",
-    "closingHours":"8pm"
+    "name": "S Street Dog Park",
+    "street": "17th & S Sts., NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20009",
+    "description": "",
+    "openHours": "7am",
+    "closingHours": "8pm"
   },
   {
-    "name":"Newark Street Dog Park",
-    "street":"Newark St NW and 39th St NW",
-    "city":"Washington",
-    "state":"DC",
-    "zip":"20008",
-    "description":"",
-    "openHours":"",
-    "closingHours":""
+    "name": "Newark Street Dog Park",
+    "street": "Newark St NW and 39th St NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20008",
+    "description": "",
+    "openHours": "",
+    "closingHours": ""
   },
   {
-    "name":"Columbia Heights Dog Park",
-    "street":"1150 Park Rd NW",
-    "city":"Washington",
-    "state":"DC",
-    "zip":"20010",
-    "description":"",
-    "openHours":"",
-    "closingHours":""
+    "name": "Columbia Heights Dog Park",
+    "street": "1150 Park Rd NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20010",
+    "description": "",
+    "openHours": "",
+    "closingHours": ""
   }
 ];
