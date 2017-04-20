@@ -11,13 +11,19 @@
     vm.parks = [];
     vm.park = {};
 
-    ParksService.getAllParks()
-    .then(function addDataOnScope(parks) {
-      vm.parks = parks;
-    })
-    .catch(function handleError(err){
-      console.warn(err);
-    });
+
+    console.info('inside parks controller');
+
+    vm.lookup = function lookup(park){
+      ParksService.getAllParks()
+      .then(function addDataOnScope(parks) {
+        vm.parks = parks;
+        console.info('inside the getallparks fn');
+      })
+      .catch(function handleError(err){
+        console.warn(err);
+      });
+    };
 
     function getParkById(id){
       if (typeof(id) !== 'string' || id.length === 0) {
