@@ -28,6 +28,7 @@
         vm.park = park;
       })
       .catch(function handleError(err){
+        console.warn(err);
         if (err.status === 404) {
           vm.hasError = true;
           vm.errorMessage = 'Could not find the park with that id';
