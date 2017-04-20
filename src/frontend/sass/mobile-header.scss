@@ -1,0 +1,12 @@
+.page-header {
+  padding: 1em;
+  background: url(/img/dog-header.jpg);
+  background-size: cover;
+  h1 {
+    color: $headerFontColor;
+  }
+  h2{
+    color: $headerFontColor;
+    font-size: 1em;
+  }
+}
