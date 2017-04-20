@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-if (!process.env.MY_DB_LOCATION) {
+if (!process.env.MONGODB_URI) {
   console.error('No database selected!');
   process.exit();
 }
 
-mongoose.connect(process.env.MY_DB_LOCATION);
+mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on('error', function handleDBError(err) {
   console.error('DB Error', err);
