@@ -10,7 +10,7 @@
 
     function getAllParks() {
       return $http({
-        url: 'https://findthebark.herokuapp.com/dog-parks',
+        url: '/dog-parks',
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -24,7 +24,7 @@
 
     function getParkById(id) {
       return $http({
-        url: 'https://findthebark.herokuapp.com/dog-parks' + id,
+        url: '/dog-parks' + id,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
