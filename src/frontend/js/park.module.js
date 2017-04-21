@@ -2,9 +2,7 @@
   'use strict';
 
   angular.module('parks', ['ui-router'])
-  .config(routerConfig)
-  /* .run(setupAuthCheck)*/;
-
+  .config(routerConfig);
 
   routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -12,7 +10,7 @@
 
       $urlRouterProvider.when('', '/');
 
-      // $urlRouterProvider.otherwise('/not-found'); // for the 404 page
+      $urlRouterProvider.otherwise('/not-found'); // for the 404 page
 
       $stateProvider
       .state({
@@ -35,27 +33,7 @@
           templateUrl: 'views/parks-list.template.html',
           controller: 'ParksController',
           controllerAs: 'parksCtrl'
-      })
-      .state({
-          name: '404-not-found',
-          url: '/not-found',
-          templateUrl: 'views/not-found.template.html'
       });
 
-      // setupAuthCheck.$inject = ['$rootScope', '$state', 'UserService'];
-
-      // function setupAuthCheck($rootScope, $state, UserService) {
-      //     // event handler here
-      //     //   $on()  ==> addEventListener()
-      //     $rootScope.$on('$stateChangeStart', function checkLoginStatus(eventObj, toState) {
-      //         if (toState.restricted && !UserService.isLoggedIn()) {
-      //             eventObj.preventDefault();
-      //             $state.go('login');
-      //         }
-      //         else {
-      //             $state.go(toState);
-      //         }
-      //     });
-      // }
     }
 }());
