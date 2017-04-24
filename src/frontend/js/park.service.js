@@ -10,7 +10,7 @@
 
     function getAllParks() {
       return $http({
-        url: 'https://findthebark.herokuapp.com/dog-parks',
+        url: '/dog-parks',
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -21,24 +21,55 @@
       });
       // add catch
     }
+    function createPark(park) {
+      console.log("keys", Object.keys(park).length !== 0);
+      console.log("typeof", typeof(park) !== 'object');
 
-    function getParkById(id) {
+      if (typeof(park) !== 'object' || Object.keys(park).length === 0){
+        console.info('inside creatr park fn', park);
+        return Promise.reject('You need to fill out all fields');
+      }
+
       return $http({
-        url: 'https://findthebark.herokuapp.com/dog-parks' + id,
-        method: 'GET',
+        url: '/dog-parks',
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+        },
+        data: {
+          name: park.name,
+          street: park.street,
+          city: park.city,
+          state: park.state,
+          zipcode: park.zipcode
+          // description: park.description,
         }
       })
-      .then(function handleResponse(response) {
+      .then(function handleResponse(response){
         return response.data;
       });
-      // add catch
     }
+
+
+
+    // function getParkById(id) {
+    //   return $http({
+    //     url: '/dog-parks' + id,
+    //     method: 'GET',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   })
+    //   .then(function handleResponse(response) {
+    //     return response.data;
+    //   });
+    //   // add catch
+    // }
 
     return {
       getAllParks: getAllParks,
-      getParkById: getParkById
+      createPark: createPark
+      // getParkById: getParkById
     };
   }
 }());
