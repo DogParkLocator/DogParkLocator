@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<h1>OMGLOLHI</h1>
-=======
 <main class='location-search'>
   <h2>Search for Barks by zip code or your current location!</h2>
   <form class='form-group col-lg-8'>
@@ -16,19 +13,10 @@
 
 </main>
 
-<main class='parks-list panel panel-default' ng-controller='ParksController as parksCtrl'>
-  <article ng-repeat='park in parksCtrl.parks'>
-    <header class='panel-heading'>
-      {{park.name}}
-      <!-- {{ expression for park address}} -->
-    </header>
-    <section class='panel-body'>
-      <!-- <p>Description: {{ expression for description of park }}</p>
-      <p>Opens: {{ expression opening time }}</p>
-      <p>Closes: {{ expression for closing time }}</p>
-      <p>Popularity {{ expression for popularity }}</p>
-      <p>Review: {{ expression for reviews }}</p> -->
-    </section>
-  </article>
-</main>
->>>>>>> master
+<section>
+  <aside id="floating-panel">
+    <input id="address" type="textbox" value="Washington, DC">
+    <input id="submit" type="button" value="Geocode">
+  </aside>
+  <article id="map"></article>
+</section>
