@@ -22,7 +22,6 @@
       <li><a ui-sref='home'>Home</a></li>
       <li><a ui-sref='about'>About</a></li>
       <li><a ui-sref='add-park'>Add a Park</a></li>
-      <li><a ui-sref='parks-list'>List of Parks</a></li>
 
     </ul>
   </nav>
@@ -30,12 +29,13 @@
 
   <main ui-view class='container'></main>
 
-
   <footer>
     <p>&copy 2017 Brian Fiala, Alex Britcliffe, and Ryan Cronin</p>
   </footer>
-  <script src='angular.js'></script>
-  <script src='//unpkg.com/angular-ui-router/release/angular-ui-router.min.js'></script>
+
+  <script src='/js/angular.js'></script>
+  <script src='/js/angular-ui-router.js'></script>
   <script src='/js/app.js'></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwOPP051rXZAYekaNADyL10LNYlWtEgUQ&callback=initMap"></script>
 </body>
 </html>
