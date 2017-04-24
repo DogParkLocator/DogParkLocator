@@ -17,58 +17,16 @@
       <button name='Login' class='btn btn-default'>Login placeholder</button>
     </hgroup>
   </header>
-  <main class='about-us'>
-    <h2>What is Find the Bark?</h2>
-    <p>Find the Bark is an application that personalizes the dog park experience for you and your best friend.
-      Users can come and search our site for local parks with reviews and ratings for each park. In order to rate or review
-      a park, a user must login first.
-    </main>
-    <main class='location-search'>
-      <h2>Search for Barks by zip code or your current location!</h2>
-      <form class='form-group col-lg-8'>
-        <label for='zip'>Search by zip code</label>
-        <input name='zip' type='number' class='form-control' placeholder='Enter Zip Code'>
+  <nav class='navbar navbar-inverse'>
+    <ul class='nav navbar-nav'>
+      <li><a ui-sref='home'>Home</a></li>
+      <li><a ui-sref='about'>About</a></li>
+      <li><a ui-sref='add-park'>Add a Park</a></li>
 
-        <label for='current-location'>Search your current location</label>
-        <input name='current-location' class='form-control' placeholder='Just a placeholder for now'>
+    </ul>
+  </nav>
+  <main ui-view class='container'></main>
 
-        <button type='submit' class='form-control btn btn-default' value='Search'>Search</button>
-
-      </form>
-
-    </main>
-    <main class='add-park' ng-controller='ParksController as parksCtrl'>
-      <h2>Add a new Bark!</h2>
-      <form class='form-group col-lg-8' ng-submit='parksCtrl.createPark(parksCtrl.park)'>
-        <label for='add-name'>Name Of Bark</label>
-        <input type='text' name='add-name' class='form-control' placeholder='Name Of Bark'
-               ng-model='parksCtrl.park.name'></input>
-
-        <label for='add-address'>Street</label>
-        <input type='text' name='add-address' class='form-control' placeholder='Street Address'
-               ng-model='parksCtrl.park.street'></input>
-
-        <label for='add-city'>City</label>
-        <input type='text' name='add-city' class='form-control' placeholder='Add City'
-               ng-model='parksCtrl.park.city'></input>
-
-        <label for='add-state'>State</label>
-        <input type='text' name='add-state' class='form-control' placeholder='Add State'
-               ng-model='parksCtrl.park.state'></input>
-
-        <label for='add-zip'>Zip Code</label>
-        <input type='number' name='add-zip' class='form-control' placeholder='Add Zip Code'
-               ng-model='parksCtrl.park.zipcode'></input>
-
-        <!-- <label for='add-description'>Park Description</label>
-        <textarea name='add-description' class='form-control' placeholder='Add Park Description'
-                  ng-model='parksCtrl.park.description'></textarea> -->
-
-        <button type='submit' name='createPark' class='btn btn-default'>Create Bark</button>
-
-      </form>
-
-    </main>
 
     <main class='parks-list panel panel-default' ng-controller='ParksController as parksCtrl'>
       <article ng-repeat='park in parksCtrl.parks'>
@@ -91,6 +49,7 @@
       <p>&copy 2017 Brian Fiala, Alex Britcliffe, and Ryan Cronin</p>
     </footer>
     <script src='angular.js'></script>
+    <script src='//unpkg.com/angular-ui-router/release/angular-ui-router.min.js'></script>
     <script src='/js/app.js'></script>
   </body>
   </html>
