@@ -28,7 +28,7 @@
     })
     .state({
       name: 'parks-list',
-      url: '/parks-list',// $stateParams will call function
+      url: '/parks-list',
       templateUrl: 'views/parks-list.template.html',
       controller: 'ParksController',
       controllerAs: 'parksCtrl'
