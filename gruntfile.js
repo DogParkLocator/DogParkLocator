@@ -30,7 +30,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'src/frontend/',
-            src: 'views/**/*.template.html',
+            src: ['views/**/*.template.html'],
             dest: 'build/'
           }
         ]

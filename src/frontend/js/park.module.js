@@ -27,13 +27,6 @@
       templateUrl: 'views/about-us.template.html'
     })
     .state({
-      name: 'map',
-      url: '/map',
-      templateUrl: 'views/map.template.html',
-      controller: 'MapController',
-      controllerAs: 'mapCtrl'
-    })
-    .state({
       name: 'parks-list',
       url: '/parks-list',// $stateParams will call function
       templateUrl: 'views/parks-list.template.html',
