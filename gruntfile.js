@@ -24,13 +24,13 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'src/frontend/',
-            src: ['*.html'],
+            src: 'index.html',
             dest: 'build/'
           },
           {
             expand: true,
             cwd: 'src/frontend/',
-            src: ['views/**/*.template.html'],
+            src: 'views/**/*.template.html',
             dest: 'build/'
           }
         ]
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
         tasks: ['sass']
       },
       html: {
-        files: ['src/frontend/index.html', 'src/frontend/views/*.html'],
+        files: ['src/frontend/index.html', 'src/frontend/views/**/*.html'],
         tasks: ['copy']
       },
       js: {

@@ -17,52 +17,22 @@
       <button name='Login' class='btn btn-default'>Login placeholder</button>
     </hgroup>
   </header>
-  <main class='about-us'>
-    <h2>What is Find the Bark?</h2>
-    <p>Find the Bark is an application that personalizes the dog park experience for you and your best friend.
-      Users can come and search our site for local parks with reviews and ratings for each park. In order to rate or review
-      a park, a user must login first.</p>
-    </main>
-    <main class='location-search'>
-      <h2>Search for Barks by zip code or your current location!</h2>
-      <form class='form-group'>
-        <label for='zip'>Search by zip code</label>
-        <input name='zip' type='number' class='' placeholder='Enter Zip Code'>
+  <nav class='navbar navbar-inverse'>
+    <ul class='nav navbar-nav'>
+      <li><a ui-sref='home'>Home</a></li>
+      <li><a ui-sref='about'>About</a></li>
+      <li><a ui-sref='add-park'>Add a Park</a></li>
+    </ul>
+  </nav>
+  <main ui-view class='container'></main>
 
-        <label for='current-location'>Search your current location</label>
-        <input name='current-location' placeholder='Just a placeholder for now'>
+  <footer>
+    <p>&copy 2017 Brian Fiala, Alex Britcliffe, and Ryan Cronin</p>
+  </footer>
 
-        <button type='submit' class='form-control btn btn-default' value='Search'>Search</button>
-
-      </form>
-
-    </main>
-
-    <main class='parks-list panel panel-default' ng-controller='ParksController as parksCtrl'>
-      <article ng-repeat='park in parksCtrl.parks'>
-        <header class='panel-heading'>
-          {{park.name}}
-          {{ expression for park address}}
-        </header>
-        <section class='panel-body'>
-          <p>Description: {{ expression for description of park }}</p>
-          <p>Opens: {{ expression opening time }}</p>
-          <p>Closes: {{ expression for closing time }}</p>
-          <p>Popularity {{ expression for popularity }}</p>
-          <p>Review: {{ expression for reviews }}</p>
-        </section>
-      </article>
-    </main>
-
-    <section ui-view></section>
-
-    <footer>
-      <p>&copy 2017 Brian Fiala, Alex Britcliffe, and Ryan Cronin</p>
-    </footer>
-
-    <script src='/js/angular.js'></script>
-    <script src='/js/angular-ui-router.js'></script>
-    <script src='/js/app.js'></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwOPP051rXZAYekaNADyL10LNYlWtEgUQ&callback=initMap"></script>
-  </body>
-  </html>
+  <script src='/js/angular.js'></script>
+  <script src='/js/angular-ui-router.js'></script>
+  <script src='/js/app.js'></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwOPP051rXZAYekaNADyL10LNYlWtEgUQ&callback=initMap"></script>
+</body>
+</html>
