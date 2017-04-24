@@ -33,7 +33,8 @@
     "mongoose": "^4.9.5"
   },
   "scripts": {
-    "test": "grunt karma"
+    "post-install": "grunt",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
