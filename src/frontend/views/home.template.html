@@ -4,27 +4,8 @@
     <label for='zip'>Search by zip code</label>
     <input name='zip' type='number' class='form-control' placeholder='Enter Zip Code'>
 
-    <label for='current-location'>Search your current location</label>
-    <input name='current-location' class='form-control' placeholder='Just a placeholder for now'>
-
     <button type='submit' class='form-control btn btn-default' value='Search'>Search</button>
 
   </form>
 
-</main>
-
-<main class='parks-list panel panel-default' ng-controller='ParksController as parksCtrl'>
-  <article ng-repeat='park in parksCtrl.parks'>
-    <header class='panel-heading'>
-      {{park.name}}
-      <!-- {{ expression for park address}} -->
-    </header>
-    <section class='panel-body'>
-      <!-- <p>Description: {{ expression for description of park }}</p>
-      <p>Opens: {{ expression opening time }}</p>
-      <p>Closes: {{ expression for closing time }}</p>
-      <p>Popularity {{ expression for popularity }}</p>
-      <p>Review: {{ expression for reviews }}</p> -->
-    </section>
-  </article>
 </main>
