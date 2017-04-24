@@ -16,16 +16,9 @@
       .state({
           name: 'home',
           url: '/',
-          templateUrl: 'views/home.template.html',
+          templateUrl: 'views/map.template.html',
           controller: 'ParksController',
           controllerAs: 'parksCtrl'
-      })
-      .state({
-          name: 'map',
-          url: '/map',
-          templateUrl: 'views/map.template.html',
-          controller: 'MapController',
-          controllerAs: 'mapCtrl'
       })
       .state({
           name: 'parks-list',
@@ -37,3 +30,12 @@
 
     }
 }());
+//
+//
+// .state({
+//     name: 'map',
+//     url: '/map',
+//     templateUrl: 'views/map.template.html',
+//     controller: 'MapController',
+//     controllerAs: 'mapCtrl'
+// })
