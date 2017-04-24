@@ -3,30 +3,51 @@
   <form class='form-group col-lg-8' ng-submit='parksCtrl.createPark(parksCtrl.park)'>
     <label for='add-name'>Name Of Bark</label>
     <input type='text' name='add-name' class='form-control' placeholder='Name Of Bark'
-           ng-model='parksCtrl.park.name'></input>
+    ng-model='parksCtrl.park.name'></input>
 
     <label for='add-address'>Street</label>
     <input type='text' name='add-address' class='form-control' placeholder='Street Address'
-           ng-model='parksCtrl.park.street'></input>
+    ng-model='parksCtrl.park.street'></input>
 
     <label for='add-city'>City</label>
     <input type='text' name='add-city' class='form-control' placeholder='Add City'
-           ng-model='parksCtrl.park.city'></input>
+    ng-model='parksCtrl.park.city'></input>
 
     <label for='add-state'>State</label>
     <input type='text' name='add-state' class='form-control' placeholder='Add State'
-           ng-model='parksCtrl.park.state'></input>
+    ng-model='parksCtrl.park.state'></input>
 
     <label for='add-zip'>Zip Code</label>
     <input type='number' name='add-zip' class='form-control' placeholder='Add Zip Code'
-           ng-model='parksCtrl.park.zipcode'></input>
-
-    <!-- <label for='add-description'>Park Description</label>
-    <textarea name='add-description' class='form-control' placeholder='Add Park Description'
-              ng-model='parksCtrl.park.description'></textarea> -->
+    ng-model='parksCtrl.park.zipcode'></input>
 
     <button type='submit' name='createPark' class='btn btn-default'>Create Bark</button>
 
   </form>
+
+
+  <article class='parks-list panel panel-default' ng-repeat='park in parksCtrl.parks'>
+    <section class='panel-heading'>
+
+      <add-park>
+        <ul>
+          <li>{{park.name}}</li>
+          <li>{{park.city}}</li>
+          <li>{{park.state}}</li>
+        </ul>
+      </add-park>
+    </section>
+
+    <section class='panel-body'>
+      <ul class='list-group'>
+        <li class='list-group-item'>{{park.name}}</li>
+        <li class='list-group-item'>{{park.street}}</li>
+        <li class='list-group-item'>{{park.city}}</li>
+        <li class='list-group-item'>{{park.state}}</li>
+        <li class='list-group-item'>{{park.zipcode}}</li>
+      </ul>
+    </section>
+  </article>
+
 
 </main>
