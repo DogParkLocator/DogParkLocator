@@ -48,9 +48,15 @@ module.exports = function(grunt) {
       angular: {
         files: [
           {
-            cwd:'node_modules/angular',
+            cwd: 'node_modules/angular',
             src: ['angular.js'],
-            dest: 'build/',
+            dest: 'build/js/',
+            expand: true
+          },
+          {
+            cwd: 'node_modules/angular-ui-router/release',
+            src: ['angular-ui-router.js'],
+            dest: 'build/js/',
             expand: true
           }
         ]

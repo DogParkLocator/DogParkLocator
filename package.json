@@ -45,5 +45,8 @@
   "bugs": {
     "url": "https://github.com/DogParkLocator/DogParkLocator/issues"
   },
-  "homepage": "https://github.com/DogParkLocator/DogParkLocator#readme"
+  "homepage": "https://github.com/DogParkLocator/DogParkLocator#readme",
+  "devDependencies": {
+    "angular-ui-router": "^0.4.2"
+  }
 }
