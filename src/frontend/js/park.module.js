@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('parks', ['ui-router'])
+  angular.module('parks', ['ui.router'])
   .config(routerConfig);
 
   routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
