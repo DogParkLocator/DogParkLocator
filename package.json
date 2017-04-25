@@ -33,7 +33,7 @@
     "mongoose": "^4.9.5"
   },
   "scripts": {
-    "post-install": "grunt",
+    "postinstall": "grunt",
     "start": "node ."
   },
   "repository": {

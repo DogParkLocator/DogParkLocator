@@ -17,7 +17,7 @@
     .state({
       name: 'home',
       url: '/',
-      templateUrl: 'views/home.template.html',
+      templateUrl: 'views/map.template.html',
       controller: 'ParksController',
       controllerAs: 'parksCtrl'
     })

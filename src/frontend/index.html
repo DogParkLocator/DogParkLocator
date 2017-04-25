@@ -9,6 +9,7 @@
   <meta name='author' content='Brian Fiala, Alexander Britcliffe, and Ryan Cronin'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'>
 </head>
+
 <body>
   <header class='page-header'>
     <hgroup>
@@ -23,10 +24,8 @@
       <li><a ui-sref='about'>About</a></li>
       <li><a ui-sref='add-park'>Add a Park</a></li>
       <li><a ui-sref='parks-list'>Parks List</a></li>
-
     </ul>
   </nav>
-
 
   <main ui-view class='container'></main>
 
@@ -36,7 +35,7 @@
 
   <script src='/js/angular.js'></script>
   <script src='/js/angular-ui-router.js'></script>
+  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCwOPP051rXZAYekaNADyL10LNYlWtEgUQ'></script>
   <script src='/js/app.js'></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwOPP051rXZAYekaNADyL10LNYlWtEgUQ&callback=initMap"></script>
 </body>
 </html>
