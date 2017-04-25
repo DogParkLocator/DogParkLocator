@@ -2,13 +2,12 @@
   'use strict';
 
   angular.module('parks')
-  .directive('addPark', addPark);
+  .directive('panel', panel);
 
-  function addPark(){
+  function panel(){
     let $ = angular.element;
-    console.log("Hello");
     return{
-      templateUrl: 'views/add-park.template.html',
+      templateUrl: 'views/parks-list.template.html',
       restrict: 'E',
       link: setUpCollapse,
       scope:{
@@ -18,11 +17,9 @@
 
 
     function setUpCollapse(scope, element){
-      console.log('sfgsdgs');
       $(element)
       .find('header')
       .on('click', function hidePanelBody() {
-        console.log($(element));
         $element.find('main').toggleClass('hidden');
       });
     }

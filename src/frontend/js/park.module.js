@@ -30,7 +30,7 @@
       name: 'parks-list',
       url: '/parks-list',
       templateUrl: 'views/parks-list.template.html',
-      controller: 'ParksController',
+      controller: 'panelCtrl',
       controllerAs: 'parksCtrl'
     })
     .state({
