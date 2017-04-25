@@ -7,21 +7,19 @@
   function panel(){
     let $ = angular.element;
     return{
-      templateUrl: 'views/parks-list.template.html',
+      templateUrl: 'views/park.template.html',
       restrict: 'E',
       link: setUpCollapse,
-      
       scope:{
-        panel: '='
+        park: '='
       }
     };
-
 
     function setUpCollapse(scope, element){
       $(element)
       .find('header')
       .on('click', function hidePanelBody() {
-        $element.find('main').toggleClass('hidden');
+        $(element).find('article').toggleClass('hidden');
       });
     }
   }

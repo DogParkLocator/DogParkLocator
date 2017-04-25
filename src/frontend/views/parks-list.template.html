@@ -1,24 +1,3 @@
-<main ng-controller='panelCtrl'>
-<article class='parks-list panel panel-default' ng-repeat='park in parksCtrl.parks'>
-
-  <section ng-click='panelClick()' class='panel-heading'>
-      <ul>
-        <li>{{park.name}}</li>
-        <li>{{park.city}}</li>
-        <li>{{park.state}}</li>
-      </ul>
-  </section>
-
-  <section class='panel-body'>
-    <panel>
-    <ul class='list-group'>
-      <li class='list-group-item'>{{park.name}}</li>
-      <li class='list-group-item'>{{park.street}}</li>
-      <li class='list-group-item'>{{park.city}}</li>
-      <li class='list-group-item'>{{park.state}}</li>
-      <li class='list-group-item'>{{park.zipcode}}</li>
-    </ul>
-   </panel>
-  </section>
-</article>
+<main>
+  <panel ng-repeat='park in parksCtrl.parks' park='park'></panel>
 </main>
