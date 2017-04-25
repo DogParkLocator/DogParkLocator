@@ -10,6 +10,7 @@
       templateUrl: 'views/parks-list.template.html',
       restrict: 'E',
       link: setUpCollapse,
+      
       scope:{
         panel: '='
       }
