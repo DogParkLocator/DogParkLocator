@@ -22,5 +22,25 @@
         $(element).find('article').toggleClass('hidden');
       });
     }
+
+    function addLikes(scope, element){
+      $(element)
+      .find('.glyphicon-thumbs-up')
+      .on('click', function incrementText(){
+        park.likes++;
+        $(element).find('.likes');
+      });
+    }
+
+    function subtractLikes(scope, element){
+      $(element)
+      .find('.glyphicon-thumbs-down')
+      .on('click', function incrementText(){
+        park.dislikes++;
+        $(element).find('.dislikes');
+      });
+    }
+
   }
+
 }());
