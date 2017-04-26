@@ -2,6 +2,10 @@
   padding: 1em;
   background: url(/img/dog-header.jpg);
   background-size: cover;
+}
+  .hidden {
+    display: none;
+  }
   h1 {
     color: $headerFontColor;
   }
@@ -9,4 +13,6 @@
     color: $headerFontColor;
     font-size: 1em;
   }
-}
+  ul {
+    list-style: none;
+  }
