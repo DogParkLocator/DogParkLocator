@@ -8,14 +8,17 @@
   <meta name='description' content='Dog park locator'>
   <meta name='author' content='Brian Fiala, Alexander Britcliffe, and Ryan Cronin'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta name='google-signin-scope' content='profile email'>
+  <meta name='google-signin-client_id' content='898787861249-be8au7qo91vljn4b14c250bunpe8ud6m.apps.googleusercontent.com'>
 </head>
 
 <body>
-  <header class='page-header'>
+  <header ng-controller='LoginController as loginCtrl' class='page-header'>
     <hgroup>
       <h1>Find the BARK!</h1>
       <h2>Your neighborhood dog park locator</h2>
-      <button name='Login' class='btn btn-default'>Login placeholder</button>
+      <aside ng-hide='loginCtrl.isLoggedIn()' class='g-signin2' data-onsuccess='onSignIn' data-theme='dark'></aside>
+      <button ng-show='loginCtrl.isLoggedIn()' ng-click='loginCtrl.signOut()'>Sign out</button>
     </hgroup>
   </header>
   <nav class='navbar navbar-inverse'>
@@ -37,5 +40,6 @@
   <script src='/js/angular-ui-router.js'></script>
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCwOPP051rXZAYekaNADyL10LNYlWtEgUQ'></script>
   <script src='/js/app.js'></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
