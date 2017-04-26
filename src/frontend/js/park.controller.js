@@ -10,6 +10,7 @@
     let vm = this;
     vm.parks = [];
     vm.park = {};
+    vm.center = {lat: 38.899, lng: -77.032}; // the iron yard location (for testing only)
 
 
     console.info('inside parks controller');
