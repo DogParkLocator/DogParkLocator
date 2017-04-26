@@ -10,18 +10,17 @@
     let vm = this;
     vm.parks = [];
     vm.park = {};
+    vm.center = {lat: 38.899, lng: -77.032}; // the iron yard location (for testing only)
+    // !!!!!!!!!!!!!!! how do we handle this? !!!!!!!!!!!!!!!!!!!!!!
+    vm.parkMarkerClicked = {}; // a google maps marker object
 
-
-    console.info('inside parks controller');
-
-    vm.getAllParks = function getAllParks(park){
-      ParksService.getAllParks(park)
-      .then(function addDataOnScope(data) {
-        vm.parks = data;
-        console.info('inside the getallparks fn', data);
+    vm.getAllParks = function getAllParks(){
+      ParksService.getAllParks()
+      .then(function addParksToScope(parks) {
+        vm.parks = parks;
       })
       .catch(function handleError(err){
-        console.warn(err);
+        console.error(err);
       });
     };
     vm.getAllParks();
@@ -30,6 +29,7 @@
       ParksService.createPark(park);
       vm.park = {};
     };
+
     // function getParkById(id){
     //   if (typeof(id) !== 'string' || id.length === 0) {
     //     return; // should add error log or return error

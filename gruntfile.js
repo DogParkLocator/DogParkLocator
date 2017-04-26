@@ -4,9 +4,8 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-
+    
     clean: ['build/'],
-
     jshint: {
       source: {
         options: {
@@ -17,7 +16,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
     copy: {
       html: {
         files: [
@@ -69,7 +67,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
     concat: {
       dist: {
         src: ['src/frontend/js/park.module.js', 'src/frontend/js/**/*.js'],
@@ -87,7 +84,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
     watch: {
       css: {
         files:['src/frontend/sass/*.scss'],
@@ -102,8 +98,6 @@ module.exports = function(grunt) {
         tasks: ['concat', 'babel']
       }
     }
-
-
   });
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');

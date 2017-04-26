@@ -21,14 +21,11 @@
       });
       // add catch
     }
-    function createPark(park) {
-      console.log("keys", Object.keys(park).length !== 0);
-      console.log("typeof", typeof(park) !== 'object');
 
+    function createPark(park) {
       if (typeof(park) !== 'object' || Object.keys(park).length === 0){
         return Promise.reject('You need to fill out all fields');
       }
-
       return $http({
         url: '/dog-parks',
         method: 'POST',
@@ -47,9 +44,8 @@
       .then(function handleResponse(response){
         return response.data;
       });
+      // add catch
     }
-
-
 
     // function getParkById(id) {
     //   return $http({

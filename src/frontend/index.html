@@ -11,6 +11,7 @@
   <meta name='google-signin-scope' content='profile email'>
   <meta name='google-signin-client_id' content='898787861249-be8au7qo91vljn4b14c250bunpe8ud6m.apps.googleusercontent.com'>
 </head>
+
 <body>
   <header ng-controller='LoginController as loginCtrl' class='page-header'>
     <hgroup>
@@ -26,10 +27,8 @@
       <li><a ui-sref='about'>About</a></li>
       <li><a ui-sref='add-park'>Add a Park</a></li>
       <li><a ui-sref='parks-list'>Parks List</a></li>
-
     </ul>
   </nav>
-
 
   <main ui-view class='container'></main>
 
@@ -39,9 +38,8 @@
 
   <script src='/js/angular.js'></script>
   <script src='/js/angular-ui-router.js'></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwOPP051rXZAYekaNADyL10LNYlWtEgUQ&callback=initMap"></script>
+  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCwOPP051rXZAYekaNADyL10LNYlWtEgUQ'></script>
   <script src='/js/app.js'></script>
-
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
