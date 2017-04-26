@@ -27,7 +27,6 @@
         console.info('inside create park fn', park);
         return Promise.reject('You need to fill out all fields');
       }
-
       return $http({
         url: '/dog-parks',
         method: 'POST',
@@ -46,10 +45,9 @@
       .then(function handleResponse(response){
         return response.data;
       });
+      // add catch
     }
-
-
-
+    
     // function getParkById(id) {
     //   return $http({
     //     url: '/dog-parks' + id,
