@@ -1,4 +1,4 @@
-(function() {
+Park(function() {
   'use strict';
 
   angular.module('parks')
@@ -13,106 +13,68 @@
       templateUrl: 'views/map.template.html',
       link: initMap,
       scope: {
-        barkObjects: '=',
-        center: '=',
-        barkPins: '='
+        parkObjects: '=',
+        center: '='
       }
     };
 
     function initMap(scope, element, attributes, controller) {
       console.log('adding a map');
-      let barkMap = new google.maps.Map(document.querySelector('.barkMap'), {
+
+      let parkMap = new google.maps.Map(document.querySelector('.parkMap'), {
         zoom: 11,
-        center: {lat: 38.899, lng: -77.032} // The Iron Yard
+        center: scope.center // The Iron Yard
         // Change center to scope.center or geolocation before deployment
       });
 
-      let barkBounds = new google.maps.LatLngBounds();
-      // barkFinder is a geocoder for address location
-      let barkFinder = new google.maps.Geocoder();
+      let parkMarkers = [];
+      let parkBounds = new google.maps.LatLngBounds();
+      let parkFinder = new google.maps.Geocoder();
 
       // Pin for testing. Remove for product deployment
-      let sampleBarkMarker = new google.maps.Marker({
-        title: 'The Iron Yard is a sample dog park',
-        map: vm.barkMap,
-        position: {lat: 38.899, lng: -77.032} // The Iron Yard
+      let sampleParkMarker = new google.maps.Marker({
+        title: 'The Iron Yard is a dog park',
+        map: parkMap,
+        position: scope.center // The Iron Yard
       });
 
-      // attach barkFinder functionality to the page button
-      document.getElementById('findBark').addEventListener('click', function() {
-        let barkAddress = document.getElementById('barkAddress').value;
-        findTheBark(barkAddress, barkObject);
+      // attach parkFinder functionality to the page button
+      document.getElementById('findPark').addEventListener('click', function() {
+        let parkAddress = document.getElementById('parkAddress').value;
+        // !!!!!!!!!! fix Object--existing park? !!!!!!!!!!!!!!!!!!!!!!
+        findThePark(parkAddress); // find the park adds a park marker... we want this?
       });
 
-      // removes all barkMarkers from the map
-      function clearBarkMarkers() {
-        barkMarkers.forEach(function deleteMarkers(barkMarker) {
-          barkMarker.setMap(null);
+      // removes all parkMarkers from the map
+      function clearParkMarkers() {
+        parkMarkers.forEach(function deleteMarkers(parkMarker) {
+          parkMarker.setMap(null);
         });
-        barkMarkers = [];
+        parkMarkers = [];
       }
 
-
-
-
-      //fill latitude and longitude data for each barkObject
-      barkObjects.forEach(function geocodeBarkObject(barkObject) {
-        let barkLocation;
-        barkFinder.geocode({'address': barkAddress}, function(results, status) {
-          if (status === 'OK') {
-            // add barkMarker to bounds? resize and recenter map appropriately?
-            addBarkMarker(results[0].geometry.location)
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      });
-
-      /**
-       * Returns an address string for a barkObject
-       * @param  {Object} barkObject Park object conforming to Park.model
-       * @return {String}            Geocodable address string
-       */
-      function barkAddressString(barkObject) {
-        return barkObject.street + ', ' + barkObject.city + ', ' + barkObject.state + ' ' + barkObject.zipcode;
-      }
-
-      /**
-       * Returns the lat, long location of a park using the address
-       * @param  {Object} barkObject a bark Object conforming to Park.model
-       * @return {Object}            a location: {lat, long}
-       */
-      function getBarkLocation(barkObject) {
-        barkFinder.geocode({'address': barkAddressString(barkObject)}, function(results, status) {
-            if (status === 'OK') {
-              addBarkMarker(results[0].geometry.location)
-            } else {
-              alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-      }
-
-      // adds all barks to the map
-      function addAllBarksToMap() {
-        barkObjects.forEach
+      // adds all parks to the map
+      function addAllParksToMap() {
+        scope.parkObjects.forEach(addParkMarker(parkObject));
       }
 
       // adds a marker to the map for the park passed as argument
-      function addBarkMarker(barkObject, location) {
-        let barkMarker = new google.maps.Marker({
-          title: barkObject.name,
-          map: barkMap,
-          position: location
+      function addParkMarker(parkObject) {
+        let parkMarker = new google.maps.Marker({
+          title: parkObject.name,
+          map: parkMap,
+          position: {'lat': parkObject.latitude, 'lng': parkObject.longitude}
         });
-        barkBounds.extend(google.maps.LatLng(location));
+        parkBounds.extend(google.maps.LatLng(location));
       }
 
-      // find bark by address or name
-      function findTheBark(barkAddress) {
-        barkFinder.geocode({'address': barkAddress}, function(results, status) {
+      // find park by address or name
+      function findThePark(parkAddress) {
+        parkFinder.geocode({'address': parkAddress}, function(results, status) {
           if (status === 'OK') {
-            // add barkMarker to bounds? resize and recenter map appropriately?
-            addBarkMarker(results[0].geometry.location)
+            // !!!!!!!!!! fix Object--existing park? !!!!!!!!!!!!!!!!!
+            let newParkObject = {name: 'new dog park'};
+            addParkMarker(newParkObject, results[0].geometry.location);
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
