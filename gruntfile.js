@@ -112,10 +112,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-
-
-
-
-
   grunt.registerTask('default', ['clean', 'concat', 'babel', 'copy', 'sass']);
 };
