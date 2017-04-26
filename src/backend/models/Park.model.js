@@ -12,7 +12,7 @@ let parkSchema = mongoose.Schema({
   description: String,
   openHour: String,
   closeHour: String,
-  popularity: String
+  popularity: String,
 });
 
 module.exports = mongoose.model('Park', parkSchema);
