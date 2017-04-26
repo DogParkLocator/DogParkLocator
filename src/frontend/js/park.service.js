@@ -21,12 +21,10 @@
       });
       // add catch
     }
-    function createPark(park) {
-      console.log("keys", Object.keys(park).length !== 0);
-      console.log("typeof", typeof(park) !== 'object');
 
+    function createPark(park) {
       if (typeof(park) !== 'object' || Object.keys(park).length === 0){
-        console.info('inside creatr park fn', park);
+        console.info('inside create park fn', park);
         return Promise.reject('You need to fill out all fields');
       }
 

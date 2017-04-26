@@ -14,9 +14,6 @@
     // !!!!!!!!!!!!!!! how do we handle this? !!!!!!!!!!!!!!!!!!!!!!
     vm.parkMarkerClicked = {}; // a google maps marker object
 
-
-    console.info('inside parks controller');
-
     vm.getAllParks = function getAllParks(){
       ParksService.getAllParks()
       .then(function addParksToScope(parks) {
@@ -32,6 +29,7 @@
       ParksService.createPark(park);
       vm.park = {};
     };
+
     // function getParkById(id){
     //   if (typeof(id) !== 'string' || id.length === 0) {
     //     return; // should add error log or return error
