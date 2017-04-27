@@ -68,9 +68,7 @@
             }
             else {
               console.log('adding park marker for: ', parkObject);
-
               let parkLocation = new google.maps.LatLng(parkObject.latitude, parkObject.longitude);
-
               console.log('park location', parkLocation);
               let parkMarker = new google.maps.Marker({
                 title: parkObject.name,
