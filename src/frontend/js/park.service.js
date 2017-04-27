@@ -55,6 +55,22 @@
       // add catch
     }
 
+    function deleteAPark(id){
+      if(typeof(id) !=='string' || !id.length){
+        return Promise.reject('You must provide a park ID to delete a reservation.');
+      }
+      return $http({
+        url: '/dog-parks/' + id,
+        method: 'DELETE',
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        }
+      })
+      .then(function handleResponse(response){
+        return response.data;
+      });
+    }
+
     // function getParkById(id) {
     //   return $http({
     //     url: '/dog-parks' + id,
@@ -71,7 +87,8 @@
 
     return {
       getAllParks: getAllParks,
-      createPark: createPark
+      createPark: createPark,
+      deleteAPark: deleteAPark
       // getParkById: getParkById
     };
   }
