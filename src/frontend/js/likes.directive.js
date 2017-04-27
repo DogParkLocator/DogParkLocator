@@ -2,16 +2,14 @@
   'use strict';
 
   angular.module('parks')
-  .directive('likes', likes);
+  .directive('likes', Likes);
 
+  Likes.$inject = ['ParksService'];
+  let $ = angular.element;
 
-  likes.$inject = ['ParksService'];
-
-  function likes(){
-    console.log("likes");
-    let $ = angular.element;
+  function Likes(){
     return{
-      templateUrl: 'views/parks-like.template.html',
+      templateUrl: 'views/park-likes.template.html',
       restrict: 'E',
       link: likes,
       scope: {
@@ -19,11 +17,10 @@
       }
     };
 
-
     function likes(scope, element){
       $(element)
       .find('.glyphicon-thumbs-up')
-      .on('click', function incrementText(){
+      .on('click', function incrementLikes(){
         $(element).find('.likes');
         park.likes++;
 
@@ -41,27 +38,28 @@
           // use service
 
         });
+      });
 
-        $(element)
-        .find('.glyphicon-thumbs-down')
-        .on('click', function incrementText(){
-          $(element).find('.dislikes');
-          park.dislikes++;
+      $(element)
+      .find('.glyphicon-thumbs-down')
+      .on('click', function incrementDislikes(){
+        $(element).find('.dislikes');
+        park.dislikes++;
 
-          $http({
-            url: '/dog-parks',
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json',
-            }
-            .then(function handleResponse(response){
-              return response.data;
-            })
-            // ???
-            // use service
-          });
+        $http({
+          url: '/dog-parks',
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+          .then(function handleResponse(response){
+            return response.data;
+          })
+          // ???
+          // use service
         });
       });
     }
   }
-}());
+}
+());

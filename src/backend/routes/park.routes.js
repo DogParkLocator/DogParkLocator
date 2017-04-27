@@ -139,11 +139,8 @@ parksRouter.post('/', function addAPark(req, res, next) {
    });
 
   if (!theParkCreated.latitude || !theParkCreated.longitude) {
-    console.log('about to geocode: ', theParkCreated);
     geocoder.geocode(addressString(theParkCreated))
     .then(function setParkLatLng(geocodeRes) {
-      console.log('successfully geocoding: ', theParkCreated.name);
-      console.log('geocoding response: ', geocodeRes);
       theParkCreated.latitude = geocodeRes[0].latitude;
       theParkCreated.longitude = geocodeRes[0].longitude;
       theParkCreated.save()
