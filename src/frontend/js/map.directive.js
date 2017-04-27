@@ -13,8 +13,7 @@
       link: initMap,
       scope: {
         parkObjects: '=',
-        center: '=',
-        parkMarkerClicked: '='
+        center: '='
       }
     };
 
@@ -77,41 +76,22 @@
               });
               parkMarker.data = parkObject;
               console.log('park marker\'s park data', parkMarker.data);
+
+              let contentString = "<section class='parks-list panel panel-default'><header class='panel-heading'><main><strong>Bark</strong><p>" + parkObject.name + "</p></main><main class='address'><strong>Address</strong><ul><li>" + parkObject.street + "</li><li>" + parkObject.city + ", " + parkObject.state + " " +  parkObject.zipcode + "</li></ul></main></header><article class='panel-body'><main><strong>Description</strong><p>" + parkObject.description + "</p></main><main><likes park='park'></likes></main></article></section>";
+
+              let parkInfoWindow = new google.maps.InfoWindow({
+                content: contentString
+              });
+
               parkMarker.addListener('click', function parkClick(event) {
-                console.log('park marker clicked', scope.parkMarkerclicked);
-                scope.parkMarkerclicked(parkMarker);
+                console.log('park marker clicked', parkMarker);
+                parkInfoWindow.open(parkMap, parkMarker);
               });
               console.log('new park marker', parkMarker);
               parkMarkers.push(parkMarker);
               parkMapBounds.extend(parkLocation);
             }
           });
-        }
-
-        function centerOfParks() {
-          let latitudes = scope.parkObjects.map(function getLatitudes(parkObject) {
-            return parkObject.latitude;
-          });
-          let longitudes = scope.parkObjects.map(function getLongitudes(parkObject) {
-            return parkObject.longitude;
-          });
-          let latitudeSum = latitudes.reduce(function(acc, val) {
-            return acc + val;
-          }, 0);
-          let latitudeAverage = latitudeSum / latitudes.length;
-          console.log('latitude average', latitudeAverage);
-          let longitudeSum = longitudes.reduce(function(acc, val) {
-            return acc + val;
-          }, 0);
-          let longitudeAverage = longitudeSum / longitudes.length;
-          console.log('longitude average', longitudeAverage);
-          return {lat: latitudeAverage, lng: longitudeAverage};
-        }
-
-        if (parkMarkers.length > 0) {
-          let newParkMapCenter = centerOfParks();
-          console.log('park map center', newParkMapCenter);
-          parkMap.setCenter(newParkMapCenter);
         }
 
         if (parkMarkers.length > 0) {
