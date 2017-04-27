@@ -4,33 +4,63 @@
   angular.module('parks')
   .directive('likes', likes);
 
+
+  likes.$inject = ['ParksService'];
+
   function likes(){
+    console.log("likes");
     let $ = angular.element;
     return{
       templateUrl: 'views/parks-like.template.html',
       restrict: 'E',
-      link: addLikes, subtractLikes,
+      link: likes,
       scope: {
         park: '='
       }
     };
 
 
-    function addLikes(scope, element){
+    function likes(scope, element){
       $(element)
       .find('.glyphicon-thumbs-up')
       .on('click', function incrementText(){
-        park.likes++;
         $(element).find('.likes');
-      });
-    }
+        park.likes++;
 
-    function subtractLikes(scope, element){
-      $(element)
-      .find('.glyphicon-thumbs-down')
-      .on('click', function incrementText(){
-        park.dislikes++;
-        $(element).find('.dislikes');
+        $http({
+          url: '/dog-parks',
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+          .then(function handleResponse(response){
+            return response.data;
+          })
+
+          // ???
+          // use service
+
+        });
+
+        $(element)
+        .find('.glyphicon-thumbs-down')
+        .on('click', function incrementText(){
+          $(element).find('.dislikes');
+          park.dislikes++;
+
+          $http({
+            url: '/dog-parks',
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+            .then(function handleResponse(response){
+              return response.data;
+            })
+            // ???
+            // use service
+          });
+        });
       });
     }
   }
