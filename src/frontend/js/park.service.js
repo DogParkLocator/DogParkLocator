@@ -41,7 +41,6 @@
           city: park.city,
           state: park.state,
           zipcode: park.zipcode
-          // description: park.description,
         }
       })
       .then(function handleResponse(response){

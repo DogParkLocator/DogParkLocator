@@ -12,13 +12,10 @@
     vm.park = {};
 
 
-    console.info('inside parks controller');
-
     vm.getAllParks = function getAllParks(park){
       ParksService.getAllParks(park)
       .then(function addDataOnScope(data) {
         vm.parks = data;
-        console.info('inside the getallparks fn', data);
       })
       .catch(function handleError(err){
         console.warn(err);
