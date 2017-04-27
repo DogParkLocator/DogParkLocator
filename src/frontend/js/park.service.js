@@ -24,8 +24,10 @@
 
     function createPark(park) {
       if (typeof(park) !== 'object' || Object.keys(park).length === 0){
+        console.error('required fields not filled out');
         return Promise.reject('You need to fill out all fields');
       }
+      console.log('inside create Park in service', park);
       return $http({
         url: '/dog-parks',
         method: 'POST',
@@ -37,8 +39,14 @@
           street: park.street,
           city: park.city,
           state: park.state,
-          zipcode: park.zipcode
-          // description: park.description,
+          zipcode: park.zipcode,
+          latitude: park.latitude,
+          longitude: park.longitude,
+          description: park.description,
+          openHour: park.openHour,
+          closeHour: park.closeHour,
+          likes: park.likes,
+          dislikes: park.dislikes
         }
       })
       .then(function handleResponse(response){

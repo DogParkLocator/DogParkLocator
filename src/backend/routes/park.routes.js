@@ -45,6 +45,7 @@ parksRouter.get('/:id', function getAPark(req, res, next) {
 * @return {Void}
 */
 parksRouter.get('/', function getAllParks(req, res, next) {
+  // need to expand to enable find by id
   if (Object.keys(req.query).length) {
     Park.find({
       zipcode: {$regex: req.query.query}
@@ -67,8 +68,8 @@ parksRouter.get('/', function getAllParks(req, res, next) {
         err.status = 500;
         return next(err);
       }
-      res.json(allParks.map(function(park) {
-        return {id: park._id, name: park.name, street: park.street, city: park.city, state: park.state, zipcode: park.zipcode, description: park.description, openHour: park.openHour, closeHour: park.closeHour, popularity: park.popularity};
+      res.json(allParks.map(function returnDetails(park) {
+        return {id: park._id, name: park.name, street: park.street, city: park.city, state: park.state, zipcode: park.zipcode, latitude: park.latitude, longitude: park.longitude, description: park.description, openHour: park.openHour, closeHour: park.closeHour, likes: park.likes, dislikes: park.dislikes};
       }));
     })
     .catch(function handleIssues(err) {
@@ -95,12 +96,14 @@ parksRouter.post('/', function addAPark(req, res, next) {
     return next(err);
   }
 
-  let theParkCreated = new Park({name: req.body.name, street: req.body.street, city: req.body.city, state: req.body.state, zipcode: req.body.zipcode, description: req.body.description, openHour: req.body.openHour, closeHour: req.body.closeHour, popularity: req.body.popularity});
+  let theParkCreated = new Park({name: req.body.name, street: req.body.street, city: req.body.city, state: req.body.state, zipcode: req.body.zipcode, latitude: req.body.latitude, longitude: req.body.longitude, description: req.body.description, openHour: req.body.openHour, closeHour: req.body.closeHour, popularity: req.body.popularity});
 
-  if (!req.body.latitude || !req.body.longitude) {
+  if (!theParkCreated.latitude || !theParkCreated.longitude) {
+    console.log('about to geocode: ', theParkCreated);
     geocoder.geocode(addressString(theParkCreated))
     .then(function setParkLatLng(res) {
-      console.log(res);
+      console.log('successfully geocoding: ', theParkCreated.name);
+      console.log('geocoding response: ', res);
       theParkCreated.latitude = res[0].latitude;
       theParkCreated.longitude = res[0].longitude;
     })
@@ -111,10 +114,14 @@ parksRouter.post('/', function addAPark(req, res, next) {
       next(ourError);
     });
   }
+  else {
+    console.log('not geocoding: the park already has a lat and long: ', theParkCreated);
+  }
 
   theParkCreated.save()
-  .then(function sendBackTheResponse(data) {
-    res.json(data);
+  .then(function sendBackTheResponse(park) {
+    console.log('park successfully saved: ', park);
+    res.json(park);
   })
   .catch(function handleIssues(err) {
     console.error(err);
@@ -145,7 +152,7 @@ parksRouter.delete('/:id', function deleteAPark(req, res, next) {
     })
     .catch(function handleError(err) {
       console.error(err);
-      let ourError = new Error('problem deleting park.');
+      let ourError = new Error('problem deleting park: ', park);
       ourError.status = err.status;
       return next(ourError);
     });

@@ -11,8 +11,8 @@
     vm.parks = [];
     vm.park = {};
     vm.center = {lat: 38.899, lng: -77.032}; // the iron yard location (for testing only)
-    // !!!!!!!!!!!!!!! how do we handle this? !!!!!!!!!!!!!!!!!!!!!!
     vm.parkMarkerClicked = {}; // a google maps marker object
+    // !!!!!!!!!!!!!!! how do we handle this? !!!!!!!!!!!!!!!!!!!!!!
 
     vm.getAllParks = function getAllParks(){
       ParksService.getAllParks()
@@ -28,6 +28,7 @@
     vm.createPark = function createPark(park) {
       ParksService.createPark(park);
       vm.park = {};
+      console.log('just added a park, here are all parks', vm.parks);
     };
 
     // function getParkById(id){

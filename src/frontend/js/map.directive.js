@@ -58,32 +58,37 @@
         clearParkMarkers();
         let parkMapBounds = new google.maps.LatLngBounds();
         console.log('adding all parks to map', scope.parkObjects);
-        scope.parkObjects.forEach(function addMarker(parkObject) {
-          if (!parkObject.latitude || !parkObject.longitude) {
-            console.error('park does not have a latitude or longitude!', parkObject);
-          }
-          else {
-            console.log('adding park marker for: ', parkObject);
+        if (scope.parkObjects.length === 0) {
+          console.log('stopped adding pins because no parks');
+        }
+        else {
+          scope.parkObjects.forEach(function addMarker(parkObject) {
+            if (!parkObject.latitude || !parkObject.longitude) {
+              console.error('park does not have a latitude or longitude', parkObject);
+            }
+            else {
+              console.log('adding park marker for: ', parkObject);
 
-            let parkLocation = new google.maps.LatLng(parkObject.latitude, parkObject.longitude);
+              let parkLocation = new google.maps.LatLng(parkObject.latitude, parkObject.longitude);
 
-            console.log('park location', parkLocation);
-            let parkMarker = new google.maps.Marker({
-              title: parkObject.name,
-              map: parkMap,
-              position: parkLocation
-            });
-            parkMarker.data = parkObject;
-            console.log('park marker\'s park data', parkMarker.data);
-            parkMarker.addListener('click', function parkClick(event) {
-              console.log('park marker clicked', scope.parkMarkerclicked);
-              scope.parkMarkerclicked(parkMarker);
-            });
-            console.log('new park marker', parkMarker);
-            parkMarkers.push(parkMarker);
-            parkMapBounds.extend(parkLocation);
-          }
-        });
+              console.log('park location', parkLocation);
+              let parkMarker = new google.maps.Marker({
+                title: parkObject.name,
+                map: parkMap,
+                position: parkLocation
+              });
+              parkMarker.data = parkObject;
+              console.log('park marker\'s park data', parkMarker.data);
+              parkMarker.addListener('click', function parkClick(event) {
+                console.log('park marker clicked', scope.parkMarkerclicked);
+                scope.parkMarkerclicked(parkMarker);
+              });
+              console.log('new park marker', parkMarker);
+              parkMarkers.push(parkMarker);
+              parkMapBounds.extend(parkLocation);
+            }
+          });
+        }
 
         function centerOfParks() {
           let latitudes = scope.parkObjects.map(function getLatitudes(parkObject) {
