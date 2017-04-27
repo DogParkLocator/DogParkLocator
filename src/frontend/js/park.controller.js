@@ -29,6 +29,20 @@
       vm.getAllParks();
     };
 
+    vm.deleteAPark = function deleteAPark(id){
+      console.log('delete a park:', id);
+
+      return ParksService.deleteAPark(id)
+        .then(function showDeleteSuccess(){
+
+          vm.getAllParks();
+        })
+        .catch(function showDeleteError(err){
+          console.warn(err);
+
+        });
+    };
+
     // function getParkById(id){
     //   if (typeof(id) !== 'string' || id.length === 0) {
     //     return; // should add error log or return error
