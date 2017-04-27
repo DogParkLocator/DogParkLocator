@@ -10,15 +10,15 @@
     let vm = this;
     vm.parks = [];
     vm.park = {};
+    vm.center = {lat: 38.899, lng: -77.032}; // the iron yard location (for testing only)
 
-
-    vm.getAllParks = function getAllParks(park){
-      ParksService.getAllParks(park)
-      .then(function addDataOnScope(data) {
-        vm.parks = data;
+    vm.getAllParks = function getAllParks(){
+      ParksService.getAllParks()
+      .then(function addParksToScope(parks) {
+        vm.parks = parks;
       })
       .catch(function handleError(err){
-        console.warn(err);
+        console.error(err);
       });
     };
     vm.getAllParks();
@@ -26,7 +26,9 @@
     vm.createPark = function createPark(park) {
       ParksService.createPark(park);
       vm.park = {};
+      vm.getAllParks();
     };
+
     // function getParkById(id){
     //   if (typeof(id) !== 'string' || id.length === 0) {
     //     return; // should add error log or return error

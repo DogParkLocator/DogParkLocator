@@ -3,18 +3,15 @@
   <form class='form-group col-lg-8'>
     <label for='zip'>Search by zip code</label>
     <input name='zip' type='number' class='form-control' placeholder='Enter Zip Code'>
-
     <button type='submit' class='form-control btn btn-default' value='Search'>Search</button>
-
   </form>
-
 </main>
 
 
 <section>
   <aside id="floating-panel">
-    <input id="address" type="textbox" value="Washington, DC">
-    <input id="submit" type="button" value="Geocode">
+    <input id="parkAddress" type="textbox" value="Address or Bark Name">
+    <input id="findPark" type="button" value="Find the Bark!">
   </aside>
-  <article id="map"></article>
+  <map park-objects='parksCtrl.parks' center='parksCtrl.center'></map>
 </section>

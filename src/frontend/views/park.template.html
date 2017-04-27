@@ -1,19 +1,24 @@
 <section class='parks-list panel panel-default'>
   <header class='panel-heading'>
-    <ul>
-      <li>{{park.name}}</li>
-    </ul>
-
+    <main>
+      <strong>Bark</strong>
+      <p>{{park.name}}</p>
+    </main>
+    <main class='address'>
+      <strong>Address</strong>
+      <ul>
+        <li>{{park.street}}</li>
+        <li>{{park.city}}, {{park.state}} {{park.zipcode}}</li>
+      </ul>
+    </main>
   </header>
   <article class='panel-body'>
-    <likes park='park'></likes>
-    <ul>
-      <li>{{park.street}}</li>
-      <li>{{park.city}}</li>
-      <li>{{park.state}}</li>
-      <li>{{park.zipcode}}</li>
-    </ul>
-
+    <main>
+      <strong>Description</strong>
+      <p>{{park.description}}</p>
+    </main>
+    <main>
+      <likes park='park'></likes>
+    </main>
   </article>
-
 </section>
