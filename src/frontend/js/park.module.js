@@ -3,7 +3,8 @@
   'use strict';
 
   angular.module('parks', ['ui.router'])
-  .config(routerConfig);
+  .config(routerConfig)
+  .run(setupAuthCheck);
 
   routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -38,12 +39,24 @@
       url: '/add-park',
       templateUrl: 'views/add-park.template.html',
       controller: 'ParksController',
-      controllerAs: 'parksCtrl'
+      controllerAs: 'parksCtrl',
+      requiresLogin: true
     })
     .state({
       name: 'not-found',
       url: '/not-found',
       templateUrl: 'views/not-found.template.html'
+    });
+  }
+  setupAuthCheck.$inject = ['$rootScope', '$state'];
+  function setupAuthCheck($rootScope, $state) {
+
+
+    $rootScope.$on('$stateChangeStart', function checkLoginStatus(eventObj, toState) {
+      if ( toState.requiresLogin && !localStorage.getItem('token')) {
+        eventObj.preventDefault();
+        $state.go('home');
+      }
     });
 
   }
