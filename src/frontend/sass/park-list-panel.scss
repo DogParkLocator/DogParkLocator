@@ -1,0 +1,17 @@
+.parks-list{
+  header{
+    display: flex;
+    main{
+      width: 50%;
+    }
+    ul{
+      padding-left: 0;
+    }
+  }
+  article{
+    display: flex;
+    main{
+      width: 70%;
+    }
+  }
+}
