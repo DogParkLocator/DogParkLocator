@@ -12,13 +12,17 @@
       </ul>
     </main>
   </header>
-  <article class='panel-body'>
+  <article ng-controller='ParksController as parksCtrl' class='panel-body'>
     <main>
       <strong>Description</strong>
       <p>{{park.description}}</p>
+      <button class='btn btn-danger col-xs-3' ng-click='parksCtrl.deleteAPark(park.id)'>
+          Delete
+      </button>
     </main>
     <main>
       <likes park='park'></likes>
     </main>
   </article>
+
 </section>
