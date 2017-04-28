@@ -17,14 +17,16 @@
     vm.createPark = function createPark(park) {
       vm.hasError = false;
       ParksService.createPark(park)
-        .then(function goToParkList(){
-          $state.go('parks-list');
-        })
-        .catch(function showCreateError(err){
-          vm.message = 'There was a problem creating the new park. Please ensure all fields are correct.';
-          vm.hasError = true;
-
-        });
+      .then(function showCreateSuccess(parkResponse){
+        console.log('created park: ', parkResponse);
+        vm.park = {};
+        $state.go('parks-list');
+      })
+      .catch(function showCreateError(err){
+        console.error(err);
+        vm.message = 'There was a problem creating the new park. Please ensure all fields are correct.';
+        vm.hasError = true;
+      });
     };
 
     vm.deleteAPark = function deleteAPark(id){
@@ -35,9 +37,9 @@
         vm.message = 'The park has been deleted!';
         vm.hasError = false;
         vm.getAllParks()
-          .then(function applyTheScope(data){
-            vm.parks = data;
-          });
+        .then(function applyTheScope(data){
+          vm.parks = data;
+        });
       })
       .catch(function showDeleteError(err){
         console.warn(err);
@@ -46,6 +48,7 @@
 
       });
     };
+    
     vm.getAllParks = function getAllParks(){
       vm.hasError = false;
       return ParksService.getAllParks()
@@ -61,8 +64,6 @@
       });
     };
     vm.getAllParks();
-
-
 
     // function getParkById(id){
     //   if (typeof(id) !== 'string' || id.length === 0) {

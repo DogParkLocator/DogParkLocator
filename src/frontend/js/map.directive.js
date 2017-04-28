@@ -6,6 +6,9 @@
 
   let $ = angular.element;
 
+  /**
+  * Map directive constructor
+  */
   function Map() {
     return {
       restrict: 'E',
@@ -17,10 +20,12 @@
       }
     };
 
-    function initMap(scope, element, attributes, controller) {
-      console.log('adding a map');
-      console.log('park center: ', scope.center);
-
+    /**
+    * creates a new google map, and adds pins for all parks
+    * @param  {Object} scope data passed through html
+    * @return {void}
+    */
+    function initMap(scope) {
       let parkMap = new google.maps.Map(document.querySelector('.parkMap'), {
         zoom: 11,
         center: scope.center // The Iron Yard---change to geolocation before deployment?
@@ -44,7 +49,11 @@
         // make the marker a different color to indicate not a new object yet?
       });
 
-      // removes all parkMarkers from the map
+
+      /**
+      * removes all parkMarkers from the map
+      * @return {void}
+      */
       function clearParkMarkers() {
         parkMarkers.forEach(function deleteMarkers(parkMarker) {
           parkMarker.setMap(null);
@@ -56,7 +65,6 @@
       scope.$watch('parkObjects', function addAllParksToMap() {
         clearParkMarkers();
         let parkMapBounds = new google.maps.LatLngBounds();
-        console.log('adding all parks to map', scope.parkObjects);
         if (scope.parkObjects.length === 0) {
           console.log('stopped adding pins because no parks');
         }
@@ -68,14 +76,12 @@
             else {
               console.log('adding park marker for: ', parkObject);
               let parkLocation = new google.maps.LatLng(parkObject.latitude, parkObject.longitude);
-              console.log('park location', parkLocation);
               let parkMarker = new google.maps.Marker({
                 title: parkObject.name,
                 map: parkMap,
                 position: parkLocation
               });
               parkMarker.data = parkObject;
-              console.log('park marker\'s park data', parkMarker.data);
 
               let contentString = "<section class='parks-list panel panel-default'><header class='panel-heading'><main><strong>Bark</strong><p>" + parkObject.name + "</p></main><main class='address'><strong>Address</strong><ul><li>" + parkObject.street + "</li><li>" + parkObject.city + ", " + parkObject.state + " " +  parkObject.zipcode + "</li></ul></main></header><article class='panel-body'><main><strong>Description</strong><p>" + parkObject.description + "</p></main><main><likes park='park'></likes></main></article></section>";
 
@@ -87,7 +93,6 @@
                 console.log('park marker clicked', parkMarker);
                 parkInfoWindow.open(parkMap, parkMarker);
               });
-              console.log('new park marker', parkMarker);
               parkMarkers.push(parkMarker);
               parkMapBounds.extend(parkLocation);
             }
@@ -95,17 +100,19 @@
         }
 
         if (parkMarkers.length > 0) {
-          console.log('park map bounds', parkMapBounds);
           parkMap.fitBounds(parkMapBounds);
           parkMap.panToBounds(parkMapBounds);
         }
       });
 
-      // find park by address or name
+      /**
+      * finds a park by address or name, using google maps geocoder api
+      * @param  {String} parkAddress address like: "1234 Fake St, Fake City, FK 99999"
+      * @return {void}
+      */
       function findThePark(parkAddress) {
         parkFinder.geocode({'address': parkAddress}, function(results, status) {
           if (status === 'OK') {
-            console.log('geocoding location results: ', results[0].geometry.location);
             let parkMarker = new google.maps.Marker({
               title: 'new dog park: ' + parkAddress,
               map: parkMap,

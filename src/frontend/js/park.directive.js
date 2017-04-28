@@ -22,5 +22,8 @@
         $(element).find('article').toggleClass('hidden');
       });
     }
+
+
   }
+
 }());

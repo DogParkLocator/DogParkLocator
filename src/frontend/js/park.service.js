@@ -6,7 +6,7 @@
 
   ParksService.$inject = ['$http'];
 
-  function ParksService($http, ParksService){
+  function ParksService($http, ParksService) {
 
     function getAllParks() {
       return $http({
@@ -19,7 +19,50 @@
       .then(function handleResponse(response){
         return response.data;
       });
-      // add catch
+    }
+
+    function updateLikes(park) {
+      if (typeof(park) !== 'object' || !park.id) {
+        console.error('no park specified');
+        return Promise.reject('Problem liking park: ', park);
+      }
+      else {
+        return $http({
+          url: '/dog-parks/' + park.id,
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          data: {
+            likes: ++park.likes
+          }
+        })
+        .then(function handleResponse(response){
+          return response.data;
+        });
+      }
+    }
+
+    function updateDislikes(park) {
+      if (typeof(park) !== 'object' || !park.id) {
+        console.error('no park specified');
+        return Promise.reject('Problem disliking park: ', park);
+      }
+      else {
+        return $http({
+          url: '/dog-parks/' + park.id,
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          data: {
+            dislikes: ++park.dislikes
+          }
+        })
+        .then(function handleResponse(response){
+          return response.data;
+        });
+      }
     }
 
     function createPark(park) {
@@ -45,18 +88,17 @@
           description: park.description,
           openHour: park.openHour,
           closeHour: park.closeHour,
-          likes: park.likes,
-          dislikes: park.dislikes
+          likes: 0,
+          dislikes: 0
         }
       })
       .then(function handleResponse(response){
         return response.data;
       });
-      // add catch
     }
 
-    function deleteAPark(id){
-      if(typeof(id) !=='string' || !id.length){
+    function deleteAPark(id) {
+      if(typeof(id) !=='string' || !id.length) {
         return Promise.reject('You must provide a park ID to delete a reservation.');
       }
       if(!localStorage.getItem('token')){
@@ -69,29 +111,17 @@
           'Authorization': localStorage.getItem('token')
         }
       })
-      .then(function handleResponse(response){
+      .then(function handleResponse(response) {
         return response.data;
       });
     }
 
-    // function getParkById(id) {
-    //   return $http({
-    //     url: '/dog-parks' + id,
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    //   })
-    //   .then(function handleResponse(response) {
-    //     return response.data;
-    //   });
-    //   // add catch
-    // }
-
     return {
       getAllParks: getAllParks,
       createPark: createPark,
-      deleteAPark: deleteAPark
+      deleteAPark: deleteAPark,
+      updateLikes: updateLikes,
+      updateDislikes: updateDislikes
       // getParkById: getParkById
     };
   }
