@@ -6,6 +6,9 @@
 
   let $ = angular.element;
 
+  /**
+  * Map directive constructor
+  */
   function Map() {
     return {
       restrict: 'E',
@@ -18,10 +21,10 @@
     };
 
     /**
-     * creates a new google map, and adds pins for all parks
-     * @param  {Object} scope data passed through html
-     * @return {void}
-     */
+    * creates a new google map, and adds pins for all parks
+    * @param  {Object} scope data passed through html
+    * @return {void}
+    */
     function initMap(scope) {
       let parkMap = new google.maps.Map(document.querySelector('.parkMap'), {
         zoom: 11,
@@ -46,7 +49,11 @@
         // make the marker a different color to indicate not a new object yet?
       });
 
-      // removes all parkMarkers from the map
+
+      /**
+      * removes all parkMarkers from the map
+      * @return {void}
+      */
       function clearParkMarkers() {
         parkMarkers.forEach(function deleteMarkers(parkMarker) {
           parkMarker.setMap(null);
@@ -98,7 +105,11 @@
         }
       });
 
-      // find park by address or name
+      /**
+      * finds a park by address or name, using google maps geocoder api
+      * @param  {String} parkAddress address like: "1234 Fake St, Fake City, FK 99999"
+      * @return {void}
+      */
       function findThePark(parkAddress) {
         parkFinder.geocode({'address': parkAddress}, function(results, status) {
           if (status === 'OK') {
