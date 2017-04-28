@@ -4,9 +4,9 @@
   angular.module('parks')
   .controller('ParksController', ParksController);
 
-  ParksController.$inject = ['$state', '$scope', 'ParksService'];
+  ParksController.$inject = ['$state', 'ParksService'];
 
-  function ParksController($state, $scope, ParksService) {
+  function ParksController($state, ParksService) {
     let vm = this;
     vm.parks = [];
     vm.park = {};
@@ -34,12 +34,8 @@
       console.log('delete a park:', id);
       return ParksService.deleteAPark(id)
       .then(function showDeleteSuccess(){
-        vm.message = 'The park has been deleted!';
-        vm.hasError = false;
-        vm.getAllParks()
-        .then(function applyTheScope(data){
-          vm.parks = data;
-        });
+        vm.getAllParks();
+        window.location.reload();
       })
       .catch(function showDeleteError(err){
         console.warn(err);
@@ -48,7 +44,7 @@
 
       });
     };
-    
+
     vm.getAllParks = function getAllParks(){
       vm.hasError = false;
       return ParksService.getAllParks()
