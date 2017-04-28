@@ -1,7 +1,9 @@
 .page-header {
-  padding: 1em;
-  background: url(/img/dog-header.jpg);
+  padding-top: 5em;
+  background: url(/img/dog-header.jpg) no-repeat;
+  margin: 0;
   background-size: cover;
+  background-position: top right;
 }
   .hidden {
     display: none;
