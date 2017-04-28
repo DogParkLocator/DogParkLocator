@@ -24,22 +24,25 @@
     vm.getAllParks();
 
     vm.createPark = function createPark(park) {
-      ParksService.createPark(park);
-      vm.park = {};
-      vm.getAllParks();
+      return ParksService.createPark(park)
+      .then(function showCreateSuccess(parkResponse){
+        console.log('created park: ', parkResponse);
+        vm.park = {};
+        vm.getAllParks();
+      })
+      .catch(function showCreateError(err){
+        console.error(err);
+      });
     };
 
     vm.deleteAPark = function deleteAPark(id){
       console.log('delete a park:', id);
-
       return ParksService.deleteAPark(id)
         .then(function showDeleteSuccess(){
-
           vm.getAllParks();
         })
         .catch(function showDeleteError(err){
           console.warn(err);
-
         });
     };
 
