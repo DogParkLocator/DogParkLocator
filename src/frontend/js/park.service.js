@@ -19,7 +19,6 @@
       .then(function handleResponse(response){
         return response.data;
       });
-      // add catch
     }
 
     function updateLikes(park) {
@@ -35,7 +34,7 @@
             'Content-Type': 'application/json',
           },
           data: {
-            dislikes: park.likes
+            likes: ++park.likes
           }
         })
         .then(function handleResponse(response){
@@ -57,7 +56,7 @@
             'Content-Type': 'application/json',
           },
           data: {
-            dislikes: park.dislikes
+            dislikes: ++park.dislikes
           }
         })
         .then(function handleResponse(response){
@@ -96,7 +95,6 @@
       .then(function handleResponse(response){
         return response.data;
       });
-      // add catch
     }
 
     function deleteAPark(id) {
@@ -113,27 +111,14 @@
       .then(function handleResponse(response) {
         return response.data;
       });
-      // add catch
     }
-
-    // function getParkById(id) {
-    //   return $http({
-    //     url: '/dog-parks' + id,
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    //   })
-    //   .then(function handleResponse(response) {
-    //     return response.data;
-    //   });
-    //   // add catch
-    // }
 
     return {
       getAllParks: getAllParks,
       createPark: createPark,
-      deleteAPark: deleteAPark
+      deleteAPark: deleteAPark,
+      updateLikes: updateLikes,
+      updateDislikes: updateDislikes
       // getParkById: getParkById
     };
   }
