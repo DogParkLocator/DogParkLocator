@@ -9,7 +9,7 @@ let geocoder = NodeGeocoder();
 * @return {String}            the address as a single string
 */
 function addressString(parkObject) {
-  return parkObject.name + ' ' + parkObject.street + ', ' + parkObject.city + ', ' + parkObject.state + ' ' + parkObject.zipcode;
+  return parkObject.street + ', ' + parkObject.city + ', ' + parkObject.state + ' ' + parkObject.zipcode;
 }
 
 /**
@@ -62,10 +62,10 @@ parksRouter.get('/', function getAllParks(req, res, next) {
   // need to expand to enable find by id
   if (Object.keys(req.query).length) {
     Park.find({
-      zipcode: {$regex: req.query.query}
+      zipcode: req.query.query
     })
-    .then(function returnMatchingParks(data) {
-      res.json(data);
+    .then(function returnMatchingParks(park) {
+      res.json(park);
     })
     .catch(function handleIssues(err) {
       console.error(err);
@@ -109,6 +109,41 @@ parksRouter.get('/', function getAllParks(req, res, next) {
   }
 });
 
+/**
+* finds the park with the id matching the argument passed in req
+* @param  {Object}   req  the request object received from the frontend
+* @param  {Object}   res  the response object to return to the frontend
+* @param  {Function} next the middleware to proceed to next, if called
+* @return {Void}
+*/
+parksRouter.patch('/:id', function updateAPark(req, res, next) {
+  Park.findById({_id: req.params.id})
+  .then(function updateThePark(park) {
+    if (!park) {
+      let ourError = new Error('park to update not found');
+      ourError.status = 404;
+      return next(ourError);
+    }
+    let updateInfo = req.body; // {likes: 44}
+    park.update({$set: updateInfo})
+    .then(function updateSuccess(parkResponse) {
+      res.json(parkResponse);
+    })
+    .catch(function handleError(err) {
+      console.error(err);
+      let ourError = new Error('problem updating park: ', park);
+      ourError.status = err.status;
+      return next(ourError);
+    });
+  })
+  .catch(function handleIssues(err) {
+    console.error(err);
+    let ourError = new Error('There was an error finding the park');
+    ourError.status = err.status;
+    return next(ourError);
+  });
+});
+
 /** Adds a park to the database
 * @param {Object}     req  the request object received from the frontend
 * @param {Object}     res  the response object to return to the frontend
@@ -120,10 +155,9 @@ parksRouter.post('/', function addAPark(req, res, next) {
     // we need to provide this response to the user through html
     console.log("not all required fields have been provided", req);
     let err = new Error('You must provide a name and complete address');
-    err.status = 400;
+    err.status = 422;
     return next(err);
   }
-
   let theParkCreated = new Park({
     name: req.body.name,
     street: req.body.street,
@@ -135,25 +169,33 @@ parksRouter.post('/', function addAPark(req, res, next) {
     description: req.body.description,
     openHour: req.body.openHour,
     closeHour: req.body.closeHour,
-    popularity: req.body.popularity
-   });
-
+    likes: req.body.likes,
+    dislikes: req.body.dislikes
+  });
   if (!theParkCreated.latitude || !theParkCreated.longitude) {
     geocoder.geocode(addressString(theParkCreated))
     .then(function setParkLatLng(geocodeRes) {
-      theParkCreated.latitude = geocodeRes[0].latitude;
-      theParkCreated.longitude = geocodeRes[0].longitude;
-      theParkCreated.save()
-      .then(function sendBackTheResponse(park) {
-        console.log('park successfully saved: ', park);
-        res.json(park);
-      })
-      .catch(function handleIssues(err) {
-        console.error(err);
-        let ourError = new Error('unable to save park', theParkCreated.name);
-        ourError.status = 422;
+      if (geocodeRes.length) {
+        theParkCreated.latitude = geocodeRes[0].latitude;
+        theParkCreated.longitude = geocodeRes[0].longitude;
+        theParkCreated.save()
+        .then(function sendBackTheResponse(park) {
+          console.log('park successfully saved: ', park);
+          res.json(park);
+        })
+        .catch(function handleIssues(err) {
+          console.error(err);
+          let ourError = new Error('unable to save park', theParkCreated.name);
+          ourError.status = 422;
+          next(ourError);
+        });
+      }
+      else {
+        let ourError = new Error('geocoding response is empty! ', geocodeRes);
+        ourError.status = 500;
+        console.warn('geocoding response is empty! ', geocodeRes);
         next(ourError);
-      });
+      }
     })
     .catch(function handleIssues(err) {
       console.error(err);
