@@ -6,7 +6,7 @@ let parkSchema = mongoose.Schema({
   street: String,
   city: String,
   state: String,
-  zipcode: String,
+  zipcode: Number,
   latitude: String,
   longitude: String,
   description: String,
