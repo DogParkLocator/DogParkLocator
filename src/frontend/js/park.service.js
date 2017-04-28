@@ -101,6 +101,9 @@
       if(typeof(id) !=='string' || !id.length) {
         return Promise.reject('You must provide a park ID to delete a reservation.');
       }
+      if(!localStorage.getItem('token')){
+        return Promise.reject('You must be logged in to delete a park.');
+      }
       return $http({
         url: '/dog-parks/' + id,
         method: 'DELETE',
