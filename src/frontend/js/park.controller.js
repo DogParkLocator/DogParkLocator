@@ -66,7 +66,7 @@
     //     return; // should add error log or return error
     //   }
     //   ParksService.getParkById(id)
-    //   .then(function addDataOnScope(park) {
+    //   .then(function addParksToScope(park) {
     //     vm.park = park;
     //   })
     //   .catch(function handleError(err){

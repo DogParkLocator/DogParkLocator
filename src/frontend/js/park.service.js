@@ -99,7 +99,7 @@
 
     function deleteAPark(id) {
       if(typeof(id) !=='string' || !id.length) {
-        return Promise.reject('You must provide a park ID to delete a reservation.');
+        return Promise.reject('You must provide a park ID to delete the park.');
       }
       if(!localStorage.getItem('token')){
         return Promise.reject('You must be logged in to delete a park.');

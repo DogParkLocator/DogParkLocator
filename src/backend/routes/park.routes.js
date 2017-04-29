@@ -60,6 +60,7 @@ parksRouter.get('/:id', function getAPark(req, res, next) {
 */
 parksRouter.get('/', function getAllParks(req, res, next) {
   // need to expand to enable find by id
+  console.log('This is the req: ', req);
   if (Object.keys(req.query).length) {
     Park.find({
       zipcode: req.query.query
@@ -169,8 +170,8 @@ parksRouter.post('/', function addAPark(req, res, next) {
     description: req.body.description,
     openHour: req.body.openHour,
     closeHour: req.body.closeHour,
-    likes: req.body.likes,
-    dislikes: req.body.dislikes
+    likes: req.body.likes || 0,
+    dislikes: req.body.dislikes || 0
   });
   if (!theParkCreated.latitude || !theParkCreated.longitude) {
     geocoder.geocode(addressString(theParkCreated))
