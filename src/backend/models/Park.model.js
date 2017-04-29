@@ -7,13 +7,13 @@ let parkSchema = mongoose.Schema({
   city: String,
   state: String,
   zipcode: Number,
-  latitude: String,
-  longitude: String,
+  latitude: Number,
+  longitude: Number,
   description: String,
   openHour: String,
   closeHour: String,
   likes: Number,
-  dislikes: Number,
+  dislikes: Number
 });
 
 module.exports = mongoose.model('Park', parkSchema);
