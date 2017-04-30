@@ -8,17 +8,31 @@
 
   function ParksService($http, ParksService) {
 
-    function getAllParks() {
-      return $http({
-        url: '/dog-parks',
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(function handleResponse(response){
-        return response.data;
-      });
+    function getAllParks(property, value) {
+      if (property && value) {
+        return $http({
+          url: '/dog-parks',
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(function handleResponse(response){
+          return response.data;
+        });
+      }
+      else { // no specified property: get all parks
+        return $http({
+          url: '/dog-parks',
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(function handleResponse(response){
+          return response.data;
+        });
+      }
     }
 
     function updateLikes(park) {
@@ -70,7 +84,6 @@
         console.error('required fields not filled out');
         return Promise.reject('You need to fill out all fields');
       }
-      console.log('inside create Park in service', park);
       return $http({
         url: '/dog-parks',
         method: 'POST',
@@ -98,8 +111,8 @@
     }
 
     function deleteAPark(id) {
-      if(typeof(id) !=='string' || !id.length) {
-        return Promise.reject('You must provide a park ID to delete the park.');
+      if(typeof(id) !== 'string' || !id.length) {
+        return Promise.reject('ERROR!! problem with park id: ', id);
       }
       if(!localStorage.getItem('token')){
         return Promise.reject('You must be logged in to delete a park.');
@@ -107,6 +120,7 @@
       return $http({
         url: '/dog-parks/' + id,
         method: 'DELETE',
+        // test the following by removing the line, and by statically entering a bad id
         headers: {
           'Authorization': localStorage.getItem('token')
         }
