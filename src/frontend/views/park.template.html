@@ -16,8 +16,7 @@
     <main ng-controller = 'LoginController as loginCtrl'>
       <strong>Description</strong>
       <p>{{park.description}}</p>
-      <button class='btn btn-danger col-xs-3' ng-show='loginCtrl.isLoggedIn()' ng-click='parksCtrl.deleteAPark(park.id)'>
-          Delete
+      <button class='btn btn-danger col-xs-3' ng-show='loginCtrl.isLoggedIn()' ng-click='parksCtrl.deleteAPark(park._id)'>Delete
       </button>
     </main>
     <main>

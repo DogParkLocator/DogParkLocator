@@ -36,13 +36,13 @@
     }
 
     function updateLikes(park) {
-      if (typeof(park) !== 'object' || !park.id) {
+      if (!park || !park._id) {
         console.error('no park specified');
         return Promise.reject('Problem liking park: ', park);
       }
       else {
         return $http({
-          url: '/dog-parks/' + park.id,
+          url: '/dog-parks/' + park._id,
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -58,13 +58,13 @@
     }
 
     function updateDislikes(park) {
-      if (typeof(park) !== 'object' || !park.id) {
+      if (typeof(park) !== 'object' || !park._id) {
         console.error('no park specified');
         return Promise.reject('Problem disliking park: ', park);
       }
       else {
         return $http({
-          url: '/dog-parks/' + park.id,
+          url: '/dog-parks/' + park._id,
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
