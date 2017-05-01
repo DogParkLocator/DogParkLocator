@@ -46,6 +46,7 @@ parksRouter.get('/:id', function getAPark(req, res, next) {
 parksRouter.get('/', function getAllParks(req, res, next) {
   console.log('req.query: ', req.query);
   let queryParams = {};
+  let sortParams = {};
   let keys = Object.keys(req.query);
   if (keys.length) {
     keys.forEach(function buildQueryObject(key) {
@@ -55,10 +56,18 @@ parksRouter.get('/', function getAllParks(req, res, next) {
           "$options": "i"
         };
       }
+      if (key === 'sortBy') {
+        if (req.query.ascending) {
+          sortParams[req.query[key]] = -1;
+        }
+        else {
+          sortParams[req.query[key]] = 1;
+        }
+      }
     });
   }
   console.log('queryParams', queryParams);
-  Park.find(queryParams)
+  Park.find(queryParams).sort(sortParams)
   .then(function returnMatchingParks(parks) {
     if (!Array.isArray(parks)) {
       let ourError = new Error('Parks is not an array');

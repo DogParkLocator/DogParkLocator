@@ -8,8 +8,10 @@
 
   function ParksService($http, ParksService) {
 
-    function getAllParks(property, value, sortBy = 'likes') {
+    function getAllParks(property, value, sortBy = 'likes', ascending = false) {
       let params = {};
+      params.sortBy = sortBy;
+      params.ascending = ascending;
       params[property] = value;
       console.log('params: ', params);
       return $http({
@@ -23,7 +25,6 @@
       .then(function handleResponse(response){
         return response.data;
       });
-
     }
 
     function updateLikes(park) {
