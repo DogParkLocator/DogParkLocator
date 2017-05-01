@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
 let parkSchema = mongoose.Schema({
-  id: String,
   name: String,
   street: String,
   city: String,
   state: String,
-  zipcode: Number,
+  zipcode: String,
   latitude: Number,
   longitude: Number,
   description: String,
