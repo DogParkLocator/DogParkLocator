@@ -10,18 +10,21 @@
 
     function getAllParks(property, value) {
       if (property && value) {
+        let params = {};
+        params[property] = value;
         return $http({
           url: '/dog-parks',
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
-          }
+          },
+          params: params
         })
         .then(function handleResponse(response){
           return response.data;
         });
       }
-      else { // no specified property: get all parks
+      else { // if no specified {property: value}, get all parks
         return $http({
           url: '/dog-parks',
           method: 'GET',

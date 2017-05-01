@@ -4,7 +4,7 @@ const NodeGeocoder = require('node-geocoder');
 let geocoder = NodeGeocoder();
 
 /**
-* Provides an address string from a dogParkObject
+* Provides an address string from a dogParkObject. Name ommitted because geocoding fails if the park is not a 'Place' in google's databse.
 * @param  {Object} parkObject an object conforming to specs in Park.model.js
 * @return {String}            the address as a single string
 */
@@ -20,7 +20,7 @@ function addressString(parkObject) {
 * @return {Void}
 */
 parksRouter.get('/:id', function getAPark(req, res, next) {
-  Park.findById(req.params.id)
+  Park.findById({_id: req.params.id})
   .then(function returnThePark(park) {
     if (!park) {
       let err = new Error('park not found');
@@ -30,27 +30,25 @@ parksRouter.get('/:id', function getAPark(req, res, next) {
     res.json(park);
   })
   .catch(function handleIssues(err) {
-    let ourError = new Error('There was an error finding the park matching id: ', req.params.id);
+    let ourError = new Error('There was an error finding the park with matching id');
     ourError.status = err.status;
     return next(ourError);
   });
 });
 
 /**
-* returns a JSON array of park objects and their respective property values.
+* returns a JSON array of park objects and their respective property values. If given parameters through req.query, then only parks matching those parameters are returned.
 * @param  {Object}   req  the request object received from the frontend
 * @param  {Object}   res  the response object to return to the frontend
 * @param  {Function} next the middleware to proceed to next, if called
 * @return {Void}
 */
 parksRouter.get('/', function getAllParks(req, res, next) {
-  // need to expand to enable find by id
+  console.log('req.query: ', req.query);
   if (Object.keys(req.query).length) {
-    Park.find({
-      zipcode: req.query.query
-    })
+    Park.find({zipcode: 20001})
     .then(function returnMatchingParks(parks) {
-      if (!Array.isArray(allParks)) {
+      if (!Array.isArray(parks)) {
         let ourError = new Error('Parks is not an array');
         ourError.status = 500;
         return next(ourError);
@@ -59,23 +57,25 @@ parksRouter.get('/', function getAllParks(req, res, next) {
       res.json(parks);
     })
     .catch(function handleIssues(err) {
-      let ourError = new Error('Error finding parks with matching zipcode: ', req.query.query);
+      console.error(err);
+      let ourError = new Error('Error finding the matching parks');
       ourError.status = err.status;
       return next(ourError);
     });
   }
   else {
     Park.find()
-    .then(function returnAllParks(allParks) {
-      if (!Array.isArray(allParks)) {
+    .then(function returnAllParks(parks) {
+      if (!Array.isArray(parks)) {
         let ourError = new Error('Parks is not an array');
         ourError.status = 500;
         return next(ourError);
       }
-      res.json(allParks);
+      res.json(parks);
     })
     .catch(function handleIssues(err) {
-      let ourError = new Error('Unable to retieve parks');
+      console.error(err);
+      let ourError = new Error('Unable to retieve the parks');
       ourError.status = err.status;
       return next(ourError);
     });
@@ -93,7 +93,7 @@ parksRouter.patch('/:id', function updateAPark(req, res, next) {
   Park.findById({_id: req.params.id})
   .then(function updateThePark(park) {
     if (!park) {
-      let ourError = new Error('park to update not found, id: ', req.params.id);
+      let ourError = new Error('park to update not found');
       ourError.status = 404;
       return next(ourError);
     }
@@ -104,13 +104,15 @@ parksRouter.patch('/:id', function updateAPark(req, res, next) {
       res.json(parkResponse);
     })
     .catch(function handleError(err) {
-      let ourError = new Error('problem updating park with the id: ', req.params.id);
+      console.error(err);
+      let ourError = new Error('problem updating the park');
       ourError.status = err.status;
       return next(ourError);
     });
   })
   .catch(function handleIssues(err) {
-    let ourError = new Error('There was an error finding the park to update with id:', req.params.id);
+    console.error(err);
+    let ourError = new Error('There was an error finding the park to update');
     ourError.status = err.status;
     return next(ourError);
   });
@@ -124,7 +126,6 @@ parksRouter.patch('/:id', function updateAPark(req, res, next) {
 */
 parksRouter.post('/', function addAPark(req, res, next) {
   if(!req.body.name || !req.body.street || !req.body.city || !req.body.state || !req.body.zipcode) {
-    // we need to provide this response to the user through html
     console.log("not all required fields have been provided", req);
     let err = new Error('You must provide a name and complete address');
     err.status = 422;
@@ -156,19 +157,20 @@ parksRouter.post('/', function addAPark(req, res, next) {
           res.json(park);
         })
         .catch(function handleIssues(err) {
-          let ourError = new Error('unable to save park', theParkCreated);
+          let ourError = new Error('unable to save the park');
           ourError.status = err.status;
           next(ourError);
         });
       }
       else {
-        let ourError = new Error('geocoding response is empty! ', geocodeRes);
+        let ourError = new Error('geocoding response is empty!');
         ourError.status = 500;
         next(ourError);
       }
     })
     .catch(function handleIssues(err) {
-      let ourError = new Error('unable to geocode park', theParkCreated);
+      console.error(err);
+      let ourError = new Error('unable to geocode the park');
       ourError.status = err.status;
       next(ourError);
     });
@@ -181,7 +183,8 @@ parksRouter.post('/', function addAPark(req, res, next) {
       res.json(park);
     })
     .catch(function handleIssues(err) {
-      let ourError = new Error('unable to save park', theParkCreated);
+      console.error(err);
+      let ourError = new Error('unable to save the park', theParkCreated);
       ourError.status = err.status;
       next(ourError);
     });
@@ -199,7 +202,7 @@ parksRouter.delete('/:id', function deleteAPark(req, res, next) {
   Park.findById({_id: req.params.id})
   .then(function removeThePark(park) {
     if (!park) {
-      let ourError = new Error('park to delete not found');
+      let ourError = new Error('park to delete not found id');
       ourError.status = 404;
       return next(ourError);
     }
@@ -209,13 +212,15 @@ parksRouter.delete('/:id', function deleteAPark(req, res, next) {
       res.json(park);
     })
     .catch(function handleError(err) {
-      let ourError = new Error('problem deleting park: ', park);
+      console.error(err);
+      let ourError = new Error('problem deleting the park');
       ourError.status = err.status;
       return next(ourError);
     });
   })
   .catch(function handleIssues(err) {
-    let ourError = new Error('There was an error finding the park with id: ', req.params.id);
+    console.error(err);
+    let ourError = new Error('problem finding the park');
     ourError.status = err.status;
     return next(ourError);
   });

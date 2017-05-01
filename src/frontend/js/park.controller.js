@@ -10,7 +10,7 @@
     let vm = this;
     vm.parks = [];
     vm.park = {};
-    vm.center = {lat: 38.899, lng: -77.032}; // the iron yard location (replace with geolocation, when available)
+    vm.center = {lat: 38.899, lng: -77.032}; // the iron yard location. Replace with geolocation, when available)
     vm.message = '';
     vm.hasError = false;
 
