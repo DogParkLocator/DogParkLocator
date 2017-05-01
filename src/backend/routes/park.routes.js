@@ -45,41 +45,44 @@ parksRouter.get('/:id', function getAPark(req, res, next) {
 */
 parksRouter.get('/', function getAllParks(req, res, next) {
   console.log('req.query: ', req.query);
-  if (Object.keys(req.query).length) {
-    Park.find(req.query)
-    .then(function returnMatchingParks(parks) {
-      if (!Array.isArray(parks)) {
-        let ourError = new Error('Parks is not an array');
-        ourError.status = 500;
-        return next(ourError);
+  let queryParams = {};
+  let sortParams = {};
+  let keys = Object.keys(req.query);
+  if (keys.length) {
+    keys.forEach(function buildQueryObject(key) {
+      if (['name', 'street', 'city', 'state', 'zipcode'].includes(key)) {
+        queryParams[key] = {
+          "$regex": req.query[key],
+          "$options": "i"
+        };
       }
-      console.log('parks successfully retrieved: ', parks);
-      res.json(parks);
-    })
-    .catch(function handleIssues(err) {
-      console.error(err);
-      let ourError = new Error('Error finding the matching parks');
-      ourError.status = err.status;
-      return next(ourError);
+      if (key === 'sortBy') {
+        if (req.query.ascending) {
+          sortParams[req.query[key]] = -1;
+        }
+        else {
+          sortParams[req.query[key]] = 1;
+        }
+      }
     });
   }
-  else {
-    Park.find()
-    .then(function returnAllParks(parks) {
-      if (!Array.isArray(parks)) {
-        let ourError = new Error('Parks is not an array');
-        ourError.status = 500;
-        return next(ourError);
-      }
-      res.json(parks);
-    })
-    .catch(function handleIssues(err) {
-      console.error(err);
-      let ourError = new Error('Unable to retieve the parks');
-      ourError.status = err.status;
+  console.log('queryParams', queryParams);
+  Park.find(queryParams).sort(sortParams)
+  .then(function returnMatchingParks(parks) {
+    if (!Array.isArray(parks)) {
+      let ourError = new Error('Parks is not an array');
+      ourError.status = 500;
       return next(ourError);
-    });
-  }
+    }
+    console.log('parks successfully retrieved: ', parks);
+    res.json(parks);
+  })
+  .catch(function handleIssues(err) {
+    console.error(err);
+    let ourError = new Error('Error finding the matching parks');
+    ourError.status = err.status;
+    return next(ourError);
+  });
 });
 
 /**

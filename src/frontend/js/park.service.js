@@ -8,34 +8,23 @@
 
   function ParksService($http, ParksService) {
 
-    function getAllParks(property, value) {
-      if (property && value) {
-        let params = {};
-        params[property] = value;
-        return $http({
-          url: '/dog-parks',
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          params: params
-        })
-        .then(function handleResponse(response){
-          return response.data;
-        });
-      }
-      else { // if no specified {property: value}, get all parks
-        return $http({
-          url: '/dog-parks',
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(function handleResponse(response){
-          return response.data;
-        });
-      }
+    function getAllParks(property, value, sortBy = 'likes', ascending = false) {
+      let params = {};
+      params.sortBy = sortBy;
+      params.ascending = ascending;
+      params[property] = value;
+      console.log('params: ', params);
+      return $http({
+        url: '/dog-parks',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        params: params
+      })
+      .then(function handleResponse(response){
+        return response.data;
+      });
     }
 
     function updateLikes(park) {
@@ -139,7 +128,6 @@
       deleteAPark: deleteAPark,
       updateLikes: updateLikes,
       updateDislikes: updateDislikes
-      // getParkById: getParkById
     };
   }
 }());
