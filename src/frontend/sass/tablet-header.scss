@@ -1,20 +1,7 @@
-.page-header {
-  padding-top: 5em;
-  background: url(/img/dog-header.jpg) no-repeat;
-  margin: 0;
-  background-size: cover;
-  background-position: top right;
+@media screen and (min-width: 35em){
+  .page-header {
+    background: url(/img/dog-header.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
 }
-  .hidden {
-    display: none;
-  }
-  h1 {
-    color: $headerFontColor;
-  }
-  h2{
-    color: $headerFontColor;
-    font-size: 1em;
-  }
-  ul {
-    list-style: none;
-  }
