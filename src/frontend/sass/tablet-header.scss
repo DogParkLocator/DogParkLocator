@@ -4,10 +4,8 @@
   margin: 0;
   background-size: cover;
   background-position: top right;
+
 }
-  .hidden {
-    display: none;
-  }
   h1 {
     color: $headerFontColor;
   }
@@ -15,6 +13,13 @@
     color: $headerFontColor;
     font-size: 1em;
   }
-  ul {
+
+  .navbar {
     list-style: none;
-  }
+    background-color: #003319;
+
+}
+    a:hover {
+      background-color: #003319;
+      transition: all 2s linear;
+    }

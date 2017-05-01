@@ -1,8 +1,9 @@
-<main class='add-park'>
-  <h2>Add a new Bark!</h2>
+<main class='add-park panel panel-default'>
+  <h2 class='panel-heading'>Add a new Bark!</h2>
   <p ng-cloak ng-show='parksCtrl.message' ng-class='{ alert:true, "alert-warning":parksCtrl.hasError }'>
   {{parksCtrl.message}}
 </p>
+  <aside class='panel-body'>
   <form class='form-group col-lg-8' ng-submit='parksCtrl.createPark(parksCtrl.park)'>
     <label for='add-name'>Name Of Bark</label>
     <input type='text' name='add-name' class='form-control' placeholder='Name Of Bark'
@@ -31,7 +32,7 @@
     <button type='submit' name='createPark' class='btn btn-default'>Create Bark</button>
 
   </form>
-
+</aside>
 
 
 
