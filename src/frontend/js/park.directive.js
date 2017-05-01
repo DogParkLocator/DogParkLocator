@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module('parks')
-  .directive('park', park);
+  .directive('park', Park);
 
-  function park(){
+  function Park(){
     let $ = angular.element;
     return{
       templateUrl: 'views/park.template.html',
@@ -16,14 +16,10 @@
     };
 
     function setUpCollapse(scope, element){
-      $(element)
-      .find('header')
+      $(element).find('header')
       .on('click', function hidePanelBody() {
         $(element).find('article').toggleClass('hidden');
       });
     }
-
-
   }
-
 }());

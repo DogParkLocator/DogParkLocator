@@ -8,27 +8,44 @@
 
   function ParksService($http, ParksService) {
 
-    function getAllParks() {
-      return $http({
-        url: '/dog-parks',
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(function handleResponse(response){
-        return response.data;
-      });
+    function getAllParks(property, value) {
+      if (property && value) {
+        let params = {};
+        params[property] = value;
+        return $http({
+          url: '/dog-parks',
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          params: params
+        })
+        .then(function handleResponse(response){
+          return response.data;
+        });
+      }
+      else { // if no specified {property: value}, get all parks
+        return $http({
+          url: '/dog-parks',
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(function handleResponse(response){
+          return response.data;
+        });
+      }
     }
 
     function updateLikes(park) {
-      if (typeof(park) !== 'object' || !park.id) {
+      if (!park || !park._id) {
         console.error('no park specified');
         return Promise.reject('Problem liking park: ', park);
       }
       else {
         return $http({
-          url: '/dog-parks/' + park.id,
+          url: '/dog-parks/' + park._id,
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -44,13 +61,13 @@
     }
 
     function updateDislikes(park) {
-      if (typeof(park) !== 'object' || !park.id) {
+      if (typeof(park) !== 'object' || !park._id) {
         console.error('no park specified');
         return Promise.reject('Problem disliking park: ', park);
       }
       else {
         return $http({
-          url: '/dog-parks/' + park.id,
+          url: '/dog-parks/' + park._id,
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -70,7 +87,6 @@
         console.error('required fields not filled out');
         return Promise.reject('You need to fill out all fields');
       }
-      console.log('inside create Park in service', park);
       return $http({
         url: '/dog-parks',
         method: 'POST',
@@ -98,8 +114,8 @@
     }
 
     function deleteAPark(id) {
-      if(typeof(id) !=='string' || !id.length) {
-        return Promise.reject('You must provide a park ID to delete a reservation.');
+      if(typeof(id) !== 'string' || !id.length) {
+        return Promise.reject('ERROR!! problem with park id: ', id);
       }
       if(!localStorage.getItem('token')){
         return Promise.reject('You must be logged in to delete a park.');
@@ -107,6 +123,7 @@
       return $http({
         url: '/dog-parks/' + id,
         method: 'DELETE',
+        // test the following by removing the line, and by statically entering a bad id
         headers: {
           'Authorization': localStorage.getItem('token')
         }
