@@ -1,39 +1,19 @@
 <main class='add-park'>
   <h2>Add a new Bark!</h2>
-  <p ng-cloak ng-show='parksCtrl.message' ng-class='{ alert:true, "alert-warning":parksCtrl.hasError }'>
-  {{parksCtrl.message}}
-</p>
+  <p ng-cloak ng-show='parksCtrl.message' ng-class='{ alert:true, "alert-warning":parksCtrl.hasError }'>{{parksCtrl.message}}</p>
   <form class='form-group col-lg-8' ng-submit='parksCtrl.createPark(parksCtrl.park)'>
     <label for='add-name'>Name Of Bark</label>
-    <input type='text' name='add-name' class='form-control' placeholder='Name Of Bark'
-    ng-model='parksCtrl.park.name' required></input>
-
+    <input type='text' name='add-name' class='form-control' placeholder='Name Of Bark' ng-model='parksCtrl.park.name' required></input>
     <label for='add-address'>Street</label>
-    <input type='text' name='add-address' class='form-control' placeholder='Street Address'
-    ng-model='parksCtrl.park.street' required></input>
-
+    <input type='text' name='add-address' class='form-control' placeholder='Street Address' ng-model='parksCtrl.park.street' required></input>
     <label for='add-city'>City</label>
-    <input type='text' name='add-city' class='form-control' placeholder='Add City'
-    ng-model='parksCtrl.park.city' required></input>
-
+    <input type='text' name='add-city' class='form-control' placeholder='Add City' ng-model='parksCtrl.park.city' required></input>
     <label for='add-state'>State</label>
-    <input type='text' name='add-state' class='form-control' placeholder='Add State'
-    ng-model='parksCtrl.park.state' required></input>
-
+    <input type='text' name='add-state' class='form-control' placeholder='Add State' ng-model='parksCtrl.park.state' required></input>
     <label for='add-zip'>Zip Code</label>
-    <input type='number' name='add-zip' class='form-control' placeholder='Add Zip Code'
-    ng-model='parksCtrl.park.zipcode' required></input>
-
+    <input type='number' name='add-zip' class='form-control' placeholder='Add Zip Code' ng-model='parksCtrl.park.zipcode' required></input>
     <label for='add-description'>Description</label>
-    <textarea type='text' name='add-description' class='form-control' placeholder='Add a Description'
-    ng-model='parksCtrl.park.description'></textarea>
-
+    <textarea type='text' name='add-description' class='form-control' placeholder='Add a Description' ng-model='parksCtrl.park.description'></textarea>
     <button type='submit' name='createPark' class='btn btn-default'>Create Bark</button>
-
   </form>
-
-
-
-
-
 </main>

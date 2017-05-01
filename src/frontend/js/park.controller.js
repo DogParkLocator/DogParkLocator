@@ -10,35 +10,38 @@
     let vm = this;
     vm.parks = [];
     vm.park = {};
-    vm.center = {lat: 38.899, lng: -77.032}; // the iron yard location. Replace with geolocation, when available)
+    vm.searchProperty = 'zipcode';
+    vm.searchValue = '';
+    vm.center = {lat: 38.899, lng: -77.032}; // the iron yard location. Replace with geolocation, when implemented
     vm.message = '';
     vm.hasError = false;
 
     vm.createPark = function createPark(park) {
       vm.hasError = false;
       ParksService.createPark(park)
-      .then(function showCreateSuccess(parkResponse){
+      .then(function showCreateSuccess(parkResponse) {
         console.log('created park: ', parkResponse);
         vm.park = {};
         $state.go('parks-list');
       })
-      .catch(function showCreateError(err){
+      .catch(function showCreateError(err) {
         console.error(err);
         vm.message = 'There was a problem creating the new park. Please ensure all fields are correct.';
         vm.hasError = true;
       });
     };
 
-    vm.deleteAPark = function deleteAPark(id){
+    vm.deleteAPark = function deleteAPark(id) {
       vm.hasError = false;
       return ParksService.deleteAPark(id)
-      .then(function deleteSuccess(){
+      .then(function deleteSuccess(parkResponse) {
+        console.log('successfully deleted: ', parkResponse);
         // vm.getAllParks(); // this line not needed with location.reload()
         window.location.reload();
       })
-      .catch(function showDeleteError(err){
+      .catch(function showDeleteError(err) {
         vm.hasError = true;
-        vm.message = 'There was a problem deleting the park!.';
+        vm.message = 'There was a problem deleting the park';
         console.error(err);
       });
     };
@@ -46,10 +49,12 @@
     vm.getAllParks = function getAllParks(property, value) {
       vm.hasError = false;
       return ParksService.getAllParks(property, value)
-      .then(function addParksToScope(parks) {
-        console.log('add parks to scope:', parks);
-        vm.parks = parks;
-        return parks;
+      .then(function addParksToScope(parksResponse) {
+        console.log('add parks to scope:', parksResponse);
+        vm.parks = parksResponse;
+        vm.searchProperty = 'zipcode';
+        vm.searchValue = '';
+        return vm.parks;
       })
       .catch(function handleError(err) {
         vm.hasError = true;
@@ -57,7 +62,7 @@
           vm.message = 'There was a problem getting all parks for ' + property + ': ' + value;
         }
         else {
-          vm.message = 'There was a problem getting all parks';
+          vm.message = 'There was a problem getting all parks.';
         }
         console.error(err);
       });

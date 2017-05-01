@@ -46,7 +46,7 @@ parksRouter.get('/:id', function getAPark(req, res, next) {
 parksRouter.get('/', function getAllParks(req, res, next) {
   console.log('req.query: ', req.query);
   if (Object.keys(req.query).length) {
-    Park.find({zipcode: 20001})
+    Park.find(req.query)
     .then(function returnMatchingParks(parks) {
       if (!Array.isArray(parks)) {
         let ourError = new Error('Parks is not an array');

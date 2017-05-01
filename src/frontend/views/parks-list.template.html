@@ -1,6 +1,4 @@
-<p ng-cloak ng-show='parksCtrl.message' ng-class='{ alert:true, "alert-warning":parksCtrl.hasError }'>
-{{parksCtrl.message}}
-</p>
+<p ng-cloak ng-show='parksCtrl.message' ng-class='{ alert:true, "alert-warning":parksCtrl.hasError }'>{{parksCtrl.message}}</p>
 <main>
   <park ng-repeat='park in parksCtrl.parks' park='park'></park>
 </main>
