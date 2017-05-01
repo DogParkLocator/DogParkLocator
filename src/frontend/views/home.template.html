@@ -1,4 +1,4 @@
-<main class='location-search'>
+<section class='location-search'>
   <h2>Search for Barks by zip code or your current location!</h2>
   <form class='form-group col-lg-8' ng-submit='parksCtrl.getAllParks(parksCtrl.searchProperty, parksCtrl.searchValue)'>
     <label for='search-by'>Search by: </label>
@@ -12,7 +12,7 @@
     <input name='zipcode' type='text' class='form-control' ng-model='parksCtrl.searchValue' placeholder='Enter your search query'>
     <button type='submit' class='form-control btn btn-default' value='Search'>Find the Barks!</button>
   </form>
-</main>
+</section>
 <section>
   <aside id="floating-panel">
     <input id="parkAddress" type="textbox" placeholder="Address or Bark Name">
