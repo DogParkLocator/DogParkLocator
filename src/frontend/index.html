@@ -12,8 +12,8 @@
   <meta name='google-signin-client_id' content='898787861249-be8au7qo91vljn4b14c250bunpe8ud6m.apps.googleusercontent.com'>
 </head>
 
-<body>
-  <header ng-controller='LoginController as loginCtrl' class='page-header'>
+<body ng-controller='LoginController as loginCtrl'>
+  <header class='page-header'>
     <hgroup>
       <h1>Find the BARK!</h1>
       <h2>Your neighborhood dog park locator</h2>
@@ -21,7 +21,7 @@
       <button ng-show='loginCtrl.isLoggedIn()' ng-click='loginCtrl.signOut()'>Sign out</button>
     </hgroup>
   </header>
-  <nav ng-controller='LoginController as loginCtrl' class='navbar navbar-inverse'>
+  <nav class='navbar navbar-inverse'>
     <ul class='nav navbar-nav'>
       <li><a ui-sref='home'>Home</a></li>
       <li><a ui-sref='about'>About</a></li>

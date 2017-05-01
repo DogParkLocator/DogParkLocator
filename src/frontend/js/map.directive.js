@@ -34,13 +34,6 @@
       let parkMarkers = [];
       let parkFinder = new google.maps.Geocoder();
 
-      // Pin for testing. Remove for product deployment
-      let sampleParkMarker = new google.maps.Marker({
-        title: 'The Iron Yard is a dog park',
-        map: parkMap,
-        position: scope.center // The Iron Yard
-      });
-
       // attach parkFinder functionality to the 'Find the Bark' button
       document.getElementById('findPark').addEventListener('click', function() {
         let parkAddress = document.getElementById('parkAddress').value;
