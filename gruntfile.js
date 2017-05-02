@@ -4,7 +4,7 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    
+
     clean: ['build/'],
     jshint: {
       source: {
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: 'src/frontend/img',
-            src: ['*.jpg'],
+            src: ['*.jpg', '*.png'],
             dest: 'build/img/',
             expand: true
           }
