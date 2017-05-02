@@ -1,6 +1,5 @@
 <p ng-cloak ng-show='parksCtrl.message' ng-class='{ alert:true, "alert-warning":parksCtrl.hasError }'>{{parksCtrl.message}}</p>
 <section class='location-search'>
-  <h2>Search for Barks by zip code or your current location!</h2>
   <form class='form-group col-lg-8' ng-submit='parksCtrl.getAllParks(parksCtrl.searchProperty, parksCtrl.searchValue)'>
     <label for='search-by'>Search by: </label>
     <select name="search-by" placeholder="Search by:" ng-model="parksCtrl.searchProperty">
