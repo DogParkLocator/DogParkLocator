@@ -6,17 +6,20 @@
 
   let $ = angular.element;
 
+  Map.$inject = ['$compile', '$rootScope'];
+
   /**
   * Map directive constructor
   */
-  function Map() {
+  function Map($compile, $rootScope) {
     return {
       restrict: 'E',
       templateUrl: 'views/map.template.html',
       link: initMap,
       scope: {
         parkObjects: '=',
-        center: '='
+        center: '=',
+        park: '=?park'
       }
     };
 
@@ -67,14 +70,19 @@
                 animation: google.maps.Animation.DROP
               });
               parkMarker.data = parkObject;
-              let contentString = "<section class='parks-list panel panel-default'><header class='panel-heading'><main><strong>Bark</strong><p>" + parkObject.name + "</p></main><main class='address'><strong>Address</strong><ul><li>" + parkObject.street + "</li><li>" + parkObject.city + ", " + parkObject.state + " " +  parkObject.zipcode + "</li></ul></main></header><article class='panel-body'><main><strong>Description</strong><p>" + parkObject.description + "</p></main><main><likes park='park'></likes></main></article></section>";
-              let parkInfoWindow = new google.maps.InfoWindow({
-                content: contentString
-              });
+
+              let markerScope = $rootScope.$new(true);
+              markerScope.park = parkObject;
+
+              let element = $compile("<marker-content park='park'></marker-content>")(markerScope);
+
               parkMarker.addListener('click', function parkClick(event) {
-                console.log('park marker clicked', parkMarker);
+                let parkInfoWindow = new google.maps.InfoWindow({
+                  content: element[0].outerHTML
+                });
                 parkInfoWindow.open(parkMap, parkMarker);
               });
+
               parkMarkers.push(parkMarker);
               parkMapBounds.extend(parkLocation);
             }
