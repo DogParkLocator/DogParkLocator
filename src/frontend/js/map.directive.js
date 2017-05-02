@@ -62,7 +62,8 @@
               let parkMarker = new google.maps.Marker({
                 title: parkObject.name,
                 map: parkMap,
-                position: parkLocation
+                position: parkLocation,
+                icon: '/img/dogParkMapMarker.png'
               });
               parkMarker.data = parkObject;
               let contentString = "<section class='parks-list panel panel-default'><header class='panel-heading'><main><strong>Bark</strong><p>" + parkObject.name + "</p></main><main class='address'><strong>Address</strong><ul><li>" + parkObject.street + "</li><li>" + parkObject.city + ", " + parkObject.state + " " +  parkObject.zipcode + "</li></ul></main></header><article class='panel-body'><main><strong>Description</strong><p>" + parkObject.description + "</p></main><main><likes park='park'></likes></main></article></section>";
