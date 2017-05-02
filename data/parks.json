@@ -5,9 +5,9 @@
     "city": "Washington",
     "state": "DC",
     "zipcode": "20001",
-    "description": "",
     "openHours": "7am",
-    "closingHours": "10pm"
+    "closingHours": "10pm",
+    "description": "Great park with plenty of room to run. There are water bowls, and a smaller area for smaller dogs."
   },
   {
     "name": "Lansburgh Dog Park",
@@ -15,9 +15,9 @@
     "city": "Washington",
     "state": "DC",
     "zipcode": "20024",
-    "description": "",
     "openHours": "7am",
-    "closingHours": "7pm"
+    "closingHours": "7pm",
+    "description": " Nice dog park with excellent facilities. There's a large and small dog area, water fountains, and poop bags in case you didn't bring any. The ground is covered in gravel, not grass"
   },
   {
     "name": "Kingsman Field Dog Park",
@@ -25,9 +25,9 @@
     "city": "Washington",
     "state": "DC",
     "zipcode": "20002",
-    "description": "",
     "openHours": "",
-    "closingHours": ""
+    "closingHours": "",
+    "description": "Nice clean and friendly dog park. Dog owners and pets alike were great to be around, but like most DC ones it is a fine gravel that gets very messy. Also, very little shade or cover."
   },
   {
     "name": "S Street Dog Park",
@@ -35,9 +35,9 @@
     "city": "Washington",
     "state": "DC",
     "zipcode": "20009",
-    "description": "",
     "openHours": "7am",
-    "closingHours": "8pm"
+    "closingHours": "8pm",
+    "description": "This compact, fenced-in dog run is made from artificial turf & features benches for human visitors"
   },
   {
     "name": "Newark Street Dog Park",
@@ -45,9 +45,9 @@
     "city": "Washington",
     "state": "DC",
     "zipcode": "20008",
-    "description": "",
     "openHours": "",
-    "closingHours": ""
+    "closingHours": "",
+    "description": "Great park away from the busy parts of the city.  There are frequently many dogs around, and a separate area for smaller dogs who don't like to play rough. Also, there is a park for children next door with picnic tables."
   },
   {
     "name": "Columbia Heights Dog Park",
@@ -55,8 +55,98 @@
     "city": "Washington",
     "state": "DC",
     "zipcode": "20010",
-    "description": "",
     "openHours": "",
-    "closingHours": ""
+    "closingHours": "",
+    "description": "Great unofficial dog park, has some spaces where small dogs can escape underneath and doesn't have double gate system so just need to keep a close eye on smaller dogs. Also RedRocks across the street provides water to refill water bowls."
+  },
+  {
+    "name": "Upshur Dog Park",
+    "street": "4300 Arkansas Ave NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20011",
+    "openHours": "",
+    "closingHours": "",
+    "description": "There is a large open area for the dogs of all sizes. Only issue is the gates can be a little difficult to latch shut. "
+  },
+  {
+    "name": "Shirlington Dog Park",
+    "street": "2754-2798 S Oakland St",
+    "city": "Arlington",
+    "state": "VA",
+    "zipcode": "22206",
+    "openHours": "6am",
+    "closingHours": "8pm",
+    "description": "Great off leash dog park set in the middle of a wooded park. There is a stream running through it and the dogs love to run and play in the water or in the trees.  Note that this dog park only has natural barriers and no fences .  It is set below the street line with natural barriers around it."
+  },
+  {
+    "name": "Clarendon Dog Park",
+    "street": "1299 N Herndon St",
+    "city": "Arlington",
+    "state": "VA",
+    "zipcode": "22201",
+    "openHours": "7am",
+    "closingHours": "9pm",
+    "description": "Clarendon is a sizable park in the middle of Clarendon. There's abundant parking. The ground is covered in sand, which can get very dirty when the fountain is on. There are water bowls provided, but no shade."
+  },
+  {
+    "name": "Langdon Dog Park",
+    "street": "2815 20th St NE",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20018",
+    "openHours": "",
+    "closingHours": "",
+    "description": ""
+  },
+  {
+    "name": "Francis Playground Dog Park",
+    "street": "25th St NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20037",
+    "openHours": "",
+    "closingHours": "",
+    "description": ""
+  },
+  {
+    "name": "Utah Dog Park",
+    "street": "3191 S Utah St",
+    "city": "Arlington",
+    "state": "VA",
+    "zipcode": "22206",
+    "openHours": "12am",
+    "closingHours": "12am",
+    "description": "This popular park is fairly large, but it is still easy to keep an eye on your dog. There are frequently other owners about with their dogs. It has gravel ground cover, and is a bit sandy, so your dog may need a bath after."
+  },
+  {
+    "name": "Dog Run Park at Carlyle",
+    "street": "1108 Jefferson St",
+    "city": "Alexandria",
+    "state": "VA",
+    "zipcode": "22314",
+    "openHours": "8am",
+    "closingHours": "sunset",
+    "description": "A great place for dogs to play. There is a smaller pea gravel park for the little dogs or dogs who don't want to run as much, and a big grassy park with new grass and sprinklers as of July 2016. Water fountains and bowls are provided for your dogs. Depending on the season you'll want to bring bug spray as the mosquitos and gnats get out of control."
+  },
+  {
+    "name": "Duke Street Dog Park",
+    "street": "Duke St",
+    "city": "Alexandria",
+    "state": "VA",
+    "zipcode": "22312",
+    "openHours": "8am",
+    "closingHours": "7pm",
+    "description": "This off-leash public dog park provides a large, fenced-in grassy area for pets to roam freely. Lacks immediate close parking but it has nice picnic tables to sit at. Take the ramp off of duke street over the bridge to the parking lot in the park. There is lots of grass, and tennis balls laying around with which your dogs can play."
+  },
+  {
+    "name": "Ben Brennan Dog Park",
+    "street": "4800 Brenman Park Dr",
+    "city": "Alexandria",
+    "state": "VA",
+    "zipcode": "22304",
+    "openHours": "6am",
+    "closingHours": "10pm",
+    "description": "This quaint little park is not large, but perfect for smaller dogs. Some have heard locals call it the puppy park. For larger dogs, Duke Street Dog Park across the street is a more appropriate place to play."
   }
 ];

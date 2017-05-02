@@ -20,10 +20,9 @@
     function updateLikeDislike(scope, element) {
       $(element[0].querySelector('.glyphicon-thumbs-up'))
       .on('click', function incrementLikes() {
-        console.log('thumbs-up clicked for: ', scope.park);
         ParksService.updateLikes(scope.park)
-        .then(function showLikedSuccess(parkResponse){
-          console.log('successfully liked park: ', parkResponse);
+        .then(function showLikedSuccess(){
+          console.log('successfully liked park: ', scope.park.name);
         })
         .catch(function showLikedError(err){
           console.error(err);
@@ -32,10 +31,9 @@
 
       $(element[0].querySelector('.glyphicon-thumbs-down'))
       .on('click', function incrementLikes() {
-        console.log('thumbs-down clicked for: ', scope.park);
         ParksService.updateDislikes(scope.park)
-        .then(function showDislikedSuccess(parkResponse){
-          console.log('successfully disliked park: ', parkResponse);
+        .then(function showDislikedSuccess(){
+          console.log('successfully disliked park: ', scope.park.name);
         })
         .catch(function showDislikedError(err){
           console.error(err);
