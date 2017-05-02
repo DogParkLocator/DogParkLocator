@@ -1,0 +1,28 @@
+@media screen and (min-width: 768px) {
+  .page-header {
+    padding-top: 5em;
+    background: url(/img/dog-header.jpg) no-repeat;
+    margin: 0;
+    background-size: cover;
+    background-position: top right;
+  }
+
+  h1 {
+    color: $headerFontColor;
+  }
+
+  h2 {
+    color: $headerFontColor;
+    font-size: 1em;
+  }
+
+  .navbar {
+    list-style: none;
+    background-color: #003319;
+  }
+
+  a:hover {
+    background-color: #003319;
+    transition: all 1s linear;
+  }
+}

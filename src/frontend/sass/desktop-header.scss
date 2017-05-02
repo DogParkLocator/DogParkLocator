@@ -1,0 +1,16 @@
+@media screen and (min-width: 900px) {
+  .page-header {
+    background: url(/img/desktop-dog-header.jpg) no-repeat;
+    background-size: cover;
+    background-position: top center;
+    height: 20em;
+
+    h1 {
+      color: $headerFontColor;
+    }
+
+    h2 {
+      color: $headerFontColor;
+    }
+  }
+}
