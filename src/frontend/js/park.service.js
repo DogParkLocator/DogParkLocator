@@ -38,6 +38,7 @@
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')
           },
           data: {
             likes: ++park.likes
@@ -60,6 +61,7 @@
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')
           },
           data: {
             dislikes: ++park.dislikes
@@ -81,6 +83,7 @@
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token')
         },
         data: {
           name: park.name,
@@ -112,8 +115,8 @@
       return $http({
         url: '/dog-parks/' + id,
         method: 'DELETE',
-        // test the following by removing the line, and by statically entering a bad id
         headers: {
+          'Content-Type': 'application/json',
           'Authorization': localStorage.getItem('token')
         }
       })
