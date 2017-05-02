@@ -76,6 +76,9 @@
       if (!park.name || !park.street || !park.city || !park.state || !park.zipcode) {
         return Promise.reject('required fields not filled out');
       }
+      if (park.zipcode.length !== 5 || park.state.length !== 2) {
+        return Promise.reject('zipcode must be 5 numbers, and state must be 2 letters');
+      }
       return $http({
         url: '/dog-parks',
         method: 'POST',

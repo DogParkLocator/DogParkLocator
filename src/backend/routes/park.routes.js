@@ -140,6 +140,11 @@ parksRouter.post('/', function addAPark(req, res, next) {
     err.status = 422;
     return next(err);
   }
+  if (req.body.zipcode.length !== 5 || req.body.state.length !== 2) {
+    let err = new Error('zipcode must be 5 numbers, and state must be 2 letters');
+    err.status = 422;
+    return next(err);
+  }
   let theParkCreated = new Park({
     name: req.body.name || 'Dog Park',
     street: req.body.street,
