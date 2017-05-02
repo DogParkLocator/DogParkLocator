@@ -2,19 +2,21 @@
   <header class='panel-heading'>
     <main>
       <strong>Bark</strong>
-      <p>{{parkObject.name}}</p>
+      <p>{{park.name}}</p>
     </main>
     <main class='address'>
       <strong>Address</strong>
       <ul>
-        <li>{{parkObject.street}}</li>
-        <li>{{parkObject.city}}, {{parkObject.state}} {{parkObject.zipcode}}</li>
+        <li>{{park.street}}</li>
+        <li>{{park.city}}, {{park.state}} {{park.zipcode}}</li>
       </ul>
     </main>
   </header>
-  <article ng-controller= 'ParksController as parksCtrl' class='panel-body'>
+  <article ng-controller='ParksController as parksCtrl' class='panel-body'>
+    <main>
       <strong>Description</strong>
-      <p>{{parkObject.description}}</p>
+      <p>{{park.description}}</p>
+    </main>
     <main>
       <likes park='park'></likes>
     </main>

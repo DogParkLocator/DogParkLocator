@@ -6,17 +6,20 @@
 
   let $ = angular.element;
 
+  Map.$inject = ['$compile', '$rootScope'];
+
   /**
   * Map directive constructor
   */
-  function Map() {
+  function Map($compile, $rootScope) {
     return {
       restrict: 'E',
       templateUrl: 'views/map.template.html',
       link: initMap,
       scope: {
         parkObjects: '=',
-        center: '='
+        center: '=',
+        park: '=?park'
       }
     };
 
@@ -67,15 +70,16 @@
                 animation: google.maps.Animation.DROP
               });
               parkMarker.data = parkObject;
-              scope.parkObject = parkObject;
-              
-              let contentString = "<marker-content park='parkObject'></marker-content>";
-              let parkInfoWindow = new google.maps.InfoWindow({
-                content: contentString
-              });
+
+              let markerScope = $rootScope.$new(true);
+              markerScope.park = parkObject;
+
+              let element = $compile("<marker-content park='park'></marker-content>")(markerScope);
 
               parkMarker.addListener('click', function parkClick(event) {
-                console.log('park marker clicked', parkMarker);
+                let parkInfoWindow = new google.maps.InfoWindow({
+                  content: element[0].outerHTML
+                });
                 parkInfoWindow.open(parkMap, parkMarker);
               });
 
