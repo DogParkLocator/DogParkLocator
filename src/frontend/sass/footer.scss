@@ -1,5 +1,9 @@
 footer {
   height: 3em;
-  background-color: #003319;
+  background-color: $navbarBackgroundColor;
   color: $headerFontColor;
+
+  p {
+    margin: 1em;
+  }
 }
