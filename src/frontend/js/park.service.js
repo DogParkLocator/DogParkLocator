@@ -13,7 +13,6 @@
       params.sortBy = sortBy;
       params.ascending = ascending;
       params[property] = value;
-      console.log('params: ', params);
       return $http({
         url: '/dog-parks',
         method: 'GET',
@@ -22,51 +21,59 @@
         },
         params: params
       })
-      .then(function handleResponse(response){
+      .then(function handleResponse(response) {
         return response.data;
       });
     }
 
     function updateLikes(park) {
-      if (typeof(park) !== 'object' || typeof(park._id) !== 'string' || !park._id.length) {
+      if (typeof(park._id) !== 'string' || !park._id.length) {
         return Promise.reject('Problem liking park: no park specified, or invalid id');
+      }
+      if (typeof(park.likes) !== 'number') {
+        return Promise.reject('Problem liking park: park.likes is NaN');
       }
       return $http({
         url: '/dog-parks/' + park._id,
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token')
         },
         data: {
           likes: ++park.likes
         }
       })
-      .then(function handleResponse(response){
+      .then(function handleResponse(response) {
         return response.data;
       });
     }
 
     function updateDislikes(park) {
-      if (typeof(park) !== 'object' || typeof(park._id) !== 'string' || !park._id.length) {
+      if (typeof(park._id) !== 'string' || !park._id.length) {
         return Promise.reject('Problem disliking park: no park specified, or invalid id');
+      }
+      if (typeof(park.dislikes) !== 'number') {
+        return Promise.reject('Problem disliking park: park.likes is NaN');
       }
       return $http({
         url: '/dog-parks/' + park._id,
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token')
         },
         data: {
           dislikes: ++park.dislikes
         }
       })
-      .then(function handleResponse(response){
+      .then(function handleResponse(response) {
         return response.data;
       });
     }
 
     function createPark(park) {
-      if (typeof(park) !== 'object' || Object.keys(park).length === 0){
+      if (!park.name || !park.street || !park.city || !park.state || !park.zipcode) {
         return Promise.reject('required fields not filled out');
       }
       return $http({
@@ -74,6 +81,7 @@
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token')
         },
         data: {
           name: park.name,
@@ -90,7 +98,7 @@
           dislikes: 0
         }
       })
-      .then(function handleResponse(response){
+      .then(function handleResponse(response) {
         return response.data;
       });
     }
@@ -107,6 +115,7 @@
         method: 'DELETE',
         // test the following by removing the line, and by statically entering a bad id
         headers: {
+          'Content-Type': 'application/json',
           'Authorization': localStorage.getItem('token')
         }
       })

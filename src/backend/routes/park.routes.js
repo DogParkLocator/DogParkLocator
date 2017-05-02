@@ -20,27 +20,26 @@ function addressString(parkObject) {
 * @return {Void}
 */
 parksRouter.get('/:id', function getAPark(req, res, next) {
-  if (typeof(req.params.id) === 'string' || req.params.id.length === 0) {
-    Park.findById({_id: req.params.id})
-    .then(function returnThePark(park) {
-      if (!park) {
-        let err = new Error('park not found');
-        err.status = 404;
-        return next(err);
-      }
-      res.json(park);
-    })
-    .catch(function handleIssues(err) {
-      let ourError = new Error('There was an error finding the park with matching id');
-      ourError.status = err.status;
-      return next(ourError);
-    });
-  }
-  else {
+  if (typeof(req.params.id) !== 'string' || req.params.id.length === 0) {
     let ourError = new Error('invalid id type or length');
     ourError.status = 422;
     return next(ourError);
   }
+  Park.findById({_id: req.params.id})
+  .then(function returnThePark(park) {
+    if (!park) {
+      let err = new Error('park not found');
+      err.status = 404;
+      return next(err);
+    }
+    res.json(park);
+  })
+  .catch(function handleIssues(err) {
+    console.error(err);
+    let ourError = new Error('There was an error finding the park with matching id');
+    ourError.status = err.status;
+    return next(ourError);
+  });
 });
 
 /**
@@ -72,28 +71,21 @@ parksRouter.get('/', function getAllParks(req, res, next) {
       }
     });
   }
-  if (typeof(queryParams) === 'object' && typeof(sortParams) === 'object') {
-    Park.find(queryParams).sort(sortParams)
-    .then(function returnMatchingParks(parks) {
-      if (!Array.isArray(parks)) {
-        let ourError = new Error('Parks is not an array');
-        ourError.status = 500;
-        return next(ourError);
-      }
-      res.json(parks);
-    })
-    .catch(function handleIssues(err) {
-      console.error(err);
-      let ourError = new Error('Error finding the matching parks');
-      ourError.status = err.status;
+  Park.find(queryParams).sort(sortParams)
+  .then(function returnMatchingParks(parks) {
+    if (!Array.isArray(parks)) {
+      let ourError = new Error('Parks is not an array');
+      ourError.status = 500;
       return next(ourError);
-    });
-  }
-  else {
-    let ourError = new Error('query params or sort params invalid');
-    ourError.status = 422;
+    }
+    res.json(parks);
+  })
+  .catch(function handleIssues(err) {
+    console.error(err);
+    let ourError = new Error('Error finding the matching parks');
+    ourError.status = err.status;
     return next(ourError);
-  }
+  });
 });
 
 /**
@@ -177,6 +169,7 @@ parksRouter.post('/', function addAPark(req, res, next) {
         res.json(park);
       })
       .catch(function handleIssues(err) {
+        console.error(err);
         let ourError = new Error('unable to save the park');
         ourError.status = err.status;
         next(ourError);
