@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     clean: ['build/'],
+
     jshint: {
       source: {
         options: {
@@ -32,12 +33,14 @@ module.exports = function(grunt) {
             dest: 'build/'
           }
         ]
+
+
       },
       allImages: {
         files: [
           {
             cwd: 'src/frontend/img',
-            src: ['*.jpg', '*.png'],
+            src: ['*.jpg'],
             dest: 'build/img/',
             expand: true
           }
@@ -84,6 +87,31 @@ module.exports = function(grunt) {
         }
       }
     },
+    karma: {
+      all: {
+        options : {
+          frameworks: ['mocha', 'chai'],
+          browsers: ['Chrome'],
+          singleRun: true,
+          preprocessors: {
+            'src/frontend/js/**/*.js': ['coverage']
+          },
+          reporters: ['dots', 'coverage'],
+          coverageReporter: {
+            type: 'text-summary'
+          },
+          files: [
+            'node_modules/angular/angular.js',
+            'node_modules/angular-mocks/angular-mocks.js',
+            'node_modules/angular-ui-router/release/angular-ui-router.js',
+            'src/frontend/js/park.module.js',
+            'src/frontend/js/**/*.js',
+            'tests/**/*.spec.js'
+          ]
+
+        }
+      }
+    },
     watch: {
       css: {
         files:['src/frontend/sass/*.scss'],
@@ -105,6 +133,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-karma');
+  require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('default', ['clean', 'concat', 'babel', 'copy', 'sass']);
+  grunt.registerTask('default', ['jshint','karma','clean', 'concat', 'babel', 'copy', 'sass']);
 };
