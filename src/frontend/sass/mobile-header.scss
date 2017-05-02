@@ -1,0 +1,15 @@
+
+.page-header {
+  padding-top: 5em;
+  background: url(/img/mobile-dog-header.jpg) no-repeat;
+  margin: 0;
+  background-size: cover;
+  background-position: center;
+  h1 {
+    color: $headerFontColor;
+  }
+  h2{
+    color: $headerFontColor;
+    font-size: 1em;
+  }
+}
