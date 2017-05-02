@@ -28,53 +28,46 @@
     }
 
     function updateLikes(park) {
-      if (!park || !park._id) {
-        console.error('no park specified');
-        return Promise.reject('Problem liking park: ', park);
+      if (typeof(park) !== 'object' || typeof(park._id) !== 'string' || !park._id.length) {
+        return Promise.reject('Problem liking park: no park specified, or invalid id');
       }
-      else {
-        return $http({
-          url: '/dog-parks/' + park._id,
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          data: {
-            likes: ++park.likes
-          }
-        })
-        .then(function handleResponse(response){
-          return response.data;
-        });
-      }
+      return $http({
+        url: '/dog-parks/' + park._id,
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          likes: ++park.likes
+        }
+      })
+      .then(function handleResponse(response){
+        return response.data;
+      });
     }
 
     function updateDislikes(park) {
-      if (typeof(park) !== 'object' || !park._id) {
-        console.error('no park specified');
-        return Promise.reject('Problem disliking park: ', park);
+      if (typeof(park) !== 'object' || typeof(park._id) !== 'string' || !park._id.length) {
+        return Promise.reject('Problem disliking park: no park specified, or invalid id');
       }
-      else {
-        return $http({
-          url: '/dog-parks/' + park._id,
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          data: {
-            dislikes: ++park.dislikes
-          }
-        })
-        .then(function handleResponse(response){
-          return response.data;
-        });
-      }
+      return $http({
+        url: '/dog-parks/' + park._id,
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          dislikes: ++park.dislikes
+        }
+      })
+      .then(function handleResponse(response){
+        return response.data;
+      });
     }
 
     function createPark(park) {
       if (typeof(park) !== 'object' || Object.keys(park).length === 0){
-        console.error('required fields not filled out');
-        return Promise.reject('You need to fill out all fields');
+        return Promise.reject('required fields not filled out');
       }
       return $http({
         url: '/dog-parks',
@@ -103,8 +96,8 @@
     }
 
     function deleteAPark(id) {
-      if(typeof(id) !== 'string' || !id.length) {
-        return Promise.reject('ERROR!! problem with park id: ', id);
+      if (typeof(id) !== 'string' || !id.length) {
+        return Promise.reject('invalid id for park to delete');
       }
       if(!localStorage.getItem('token')){
         return Promise.reject('You must be logged in to delete a park.');
