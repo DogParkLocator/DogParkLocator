@@ -1,4 +1,3 @@
-
 (function() {
   'use strict';
 
@@ -9,11 +8,8 @@
   routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
   function routerConfig($stateProvider, $urlRouterProvider) {
-
     $urlRouterProvider.when('', '/');
-
     $urlRouterProvider.otherwise('/not-found');
-
     $stateProvider
     .state({
       name: 'home',
@@ -48,16 +44,14 @@
       templateUrl: 'views/not-found.template.html'
     });
   }
+  
   setupAuthCheck.$inject = ['$rootScope', '$state'];
   function setupAuthCheck($rootScope, $state) {
-
-
     $rootScope.$on('$stateChangeStart', function checkLoginStatus(eventObj, toState) {
       if ( toState.requiresLogin && !localStorage.getItem('token')) {
         eventObj.preventDefault();
         $state.go('home');
       }
     });
-
   }
 }());

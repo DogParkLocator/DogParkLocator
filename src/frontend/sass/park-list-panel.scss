@@ -1,17 +1,21 @@
 .parks-list{
-  header{
+  .panel-heading {
+    background-color: #CCFFCC;
+  }
+    header{
     display: flex;
+    background-color: green;
     main{
       width: 50%;
     }
     ul{
       padding-left: 0;
     }
-  }
-  article{
-    display: flex;
-    main{
-      width: 70%;
+    article{
+      display: flex;
+      main{
+        width: 70%;
+      }
     }
   }
 }

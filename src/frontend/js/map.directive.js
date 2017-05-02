@@ -6,17 +6,20 @@
 
   let $ = angular.element;
 
+  Map.$inject = ['$compile', '$rootScope'];
+
   /**
   * Map directive constructor
   */
-  function Map() {
+  function Map($compile, $rootScope) {
     return {
       restrict: 'E',
       templateUrl: 'views/map.template.html',
       link: initMap,
       scope: {
         parkObjects: '=',
-        center: '='
+        center: '=',
+        park: '=?park'
       }
     };
 
@@ -30,25 +33,8 @@
         zoom: 11,
         center: scope.center // The Iron Yard---change to geolocation before deployment?
       });
-
       let parkMarkers = [];
       let parkFinder = new google.maps.Geocoder();
-
-      // Pin for testing. Remove for product deployment
-      let sampleParkMarker = new google.maps.Marker({
-        title: 'The Iron Yard is a dog park',
-        map: parkMap,
-        position: scope.center // The Iron Yard
-      });
-
-      // attach parkFinder functionality to the 'Find the Bark' button
-      document.getElementById('findPark').addEventListener('click', function() {
-        let parkAddress = document.getElementById('parkAddress').value;
-        // !!!!!!!!!! fix Object--existing park? !!!!!!!!!!!!!!!!!!!!!!
-        findThePark(parkAddress); // find the park adds a park marker... we want this?
-        // make the marker a different color to indicate not a new object yet?
-      });
-
 
       /**
       * removes all parkMarkers from the map
@@ -61,7 +47,7 @@
         parkMarkers = [];
       }
 
-      // adds all parks to the map when array of parkObjects changes
+      // adds all parks to the map when the array of parkObjects changes
       scope.$watch('parkObjects', function addAllParksToMap() {
         clearParkMarkers();
         let parkMapBounds = new google.maps.LatLngBounds();
@@ -79,51 +65,34 @@
               let parkMarker = new google.maps.Marker({
                 title: parkObject.name,
                 map: parkMap,
-                position: parkLocation
+                position: parkLocation,
+                icon: '/img/dogParkMapMarker.png',
+                animation: google.maps.Animation.DROP
               });
               parkMarker.data = parkObject;
 
-              let contentString = "<section class='parks-list panel panel-default'><header class='panel-heading'><main><strong>Bark</strong><p>" + parkObject.name + "</p></main><main class='address'><strong>Address</strong><ul><li>" + parkObject.street + "</li><li>" + parkObject.city + ", " + parkObject.state + " " +  parkObject.zipcode + "</li></ul></main></header><article class='panel-body'><main><strong>Description</strong><p>" + parkObject.description + "</p></main><main><likes park='park'></likes></main></article></section>";
+              let markerScope = $rootScope.$new(true);
+              markerScope.park = parkObject;
 
-              let parkInfoWindow = new google.maps.InfoWindow({
-                content: contentString
-              });
+              let element = $compile("<marker-content park='park'></marker-content>")(markerScope);
 
               parkMarker.addListener('click', function parkClick(event) {
-                console.log('park marker clicked', parkMarker);
+                let parkInfoWindow = new google.maps.InfoWindow({
+                  content: element[0].outerHTML
+                });
                 parkInfoWindow.open(parkMap, parkMarker);
               });
+
               parkMarkers.push(parkMarker);
               parkMapBounds.extend(parkLocation);
             }
           });
         }
-
         if (parkMarkers.length > 0) {
           parkMap.fitBounds(parkMapBounds);
           parkMap.panToBounds(parkMapBounds);
         }
       });
-
-      /**
-      * finds a park by address or name, using google maps geocoder api
-      * @param  {String} parkAddress address like: "1234 Fake St, Fake City, FK 99999"
-      * @return {void}
-      */
-      function findThePark(parkAddress) {
-        parkFinder.geocode({'address': parkAddress}, function(results, status) {
-          if (status === 'OK') {
-            let parkMarker = new google.maps.Marker({
-              title: 'new dog park: ' + parkAddress,
-              map: parkMap,
-              position: results[0].geometry.location
-            });
-            parkMap.setCenter(results[0].geometry.location);
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
     } // initMap
   }
 })();
