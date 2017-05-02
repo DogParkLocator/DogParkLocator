@@ -40,8 +40,8 @@
         window.location.reload();
       })
       .catch(function showDeleteError(err) {
-        vm.hasError = true;
         vm.message = 'There was a problem deleting the park';
+        vm.hasError = true;
         console.error(err);
       });
     };
@@ -60,9 +60,11 @@
         vm.hasError = true;
         if (property && value) {
           vm.message = 'There was a problem getting all parks for ' + property + ': ' + value;
+          vm.hasError = true;
         }
         else {
           vm.message = 'There was a problem getting all parks.';
+          vm.hasError = true;
         }
         console.error(err);
       });
