@@ -67,16 +67,18 @@
                 animation: google.maps.Animation.DROP
               });
               parkMarker.data = parkObject;
-              let contentString = "<section class='parks-list panel panel-default'><header class='panel-heading'><main><strong>Bark</strong><p>" + parkObject.name + "</p></main><main class='address'><strong>Address</strong><ul><li>" + parkObject.street + "</li><li>" + parkObject.city + ", " + parkObject.state + " " +  parkObject.zipcode + "</li></ul></main></header><article class='panel-body'><main><strong>Description</strong><p>" + parkObject.description + "</p></main><main><likes park='park'></likes></main></article></section>";
-              let contentString2 = "<section class='parks-list panel panel-default'><header class='panel-heading'><main><strong>Bark</strong><p>" + parkObject.name + "</p></main><main class='address'><strong>Address</strong><ul><li>" + parkObject.street + "</li><li>" + parkObject.city + ", " + parkObject.state + " " + parkObject.zipcode + "</li></ul></main></header><article ng-controller= 'ParksController as parksCtrl' class='panel-body'><main ng-controller = 'LoginController as loginCtrl'><strong>Description</strong><p>" + parkObject.description + "</p><button class='btn btn-danger col-xs-3' ng-show='loginCtrl.isLoggedIn()' ng-click='parksCtrl.deleteAPark(park._id)'>Delete</button></main><main><likes park='park'></likes></main></article></section>";
-
+              scope.parkObject = parkObject;
+              
+              let contentString = "<marker-content park='parkObject'></marker-content>";
               let parkInfoWindow = new google.maps.InfoWindow({
-                content: contentString2
+                content: contentString
               });
+
               parkMarker.addListener('click', function parkClick(event) {
                 console.log('park marker clicked', parkMarker);
                 parkInfoWindow.open(parkMap, parkMarker);
               });
+
               parkMarkers.push(parkMarker);
               parkMapBounds.extend(parkLocation);
             }
