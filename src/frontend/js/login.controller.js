@@ -9,7 +9,7 @@
     let vm = this;
 
     window.onSignIn = function onSignIn(googleUser){
-      localStorage.setItem('token', googleUser.zi.access_token);
+      localStorage.setItem('token', googleUser.Zi.access_token);
       $scope.$apply();
     };
 
