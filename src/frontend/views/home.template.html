@@ -1,5 +1,5 @@
 <p ng-cloak ng-show='parksCtrl.message' ng-class='{ alert:true, "alert-warning":parksCtrl.hasError }'>{{parksCtrl.message}}</p>
-<form class='location-search' class='form-group col-lg-8' ng-submit='parksCtrl.getAllParks(parksCtrl.searchProperty, parksCtrl.searchValue)'>
+<form class='location-search form-group col-lg-8' ng-submit='parksCtrl.getAllParks(parksCtrl.searchProperty, parksCtrl.searchValue)'>
   <label class='search-by' for='search-by'>Search by: </label>
   <select class='search-select' class='form-control' name="search-by" placeholder="Search by:" ng-model="parksCtrl.searchProperty">
     <option value="name">Name</option>
