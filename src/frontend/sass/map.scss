@@ -1,4 +1,16 @@
 .parkMap {
-  height: 600px;
+  height: 450px;
   width: 100%;
+}
+
+@media screen and (min-width: 35em) {
+  .parkMap {
+    height: 600px;
+  }
+}
+
+@media screen and (min-width: 70em) {
+  .parkMap {
+    height: 800px;
+  }
 }
