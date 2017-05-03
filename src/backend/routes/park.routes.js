@@ -135,12 +135,24 @@ parksRouter.patch('/:id', function updateAPark(req, res, next) {
 * @return {void}
 */
 parksRouter.post('/', function addAPark(req, res, next) {
+
+  console.info('request body: ', req.body);
+
   if(!req.body.name || !req.body.street || !req.body.city || !req.body.state || !req.body.zipcode) {
+
+    console.error('server: name, address or something messed up: ', req.body);
+
     let err = new Error('a name and complete address must be provided');
     err.status = 422;
     return next(err);
   }
+
+  console.warn('zipcode length and state length: ', req.body.zipcode.length, req.body.state.length);
+
   if (req.body.zipcode.length !== 5 || req.body.state.length !== 2) {
+
+    console.error('server: zipcode or state messed up: ', req.body);
+
     let err = new Error('zipcode must be 5 numbers, and state must be 2 letters');
     err.status = 422;
     return next(err);
@@ -188,6 +200,9 @@ parksRouter.post('/', function addAPark(req, res, next) {
     });
   }
   else {
+
+    console.info('about to save park: ', theParkCreated);
+
     theParkCreated.save()
     .then(function sendBackTheResponse(park) {
       res.json(park);

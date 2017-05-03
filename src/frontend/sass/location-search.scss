@@ -1,6 +1,28 @@
+.location-search {
+
+  label {
+    color: #FFFFFF;
+  }
+
+  select {
+    margin-bottom: .3em;
+    border: 2px solid $navbarBackgroundColor;
+  }
+
+  input {
+    margin-bottom: .3em;
+    border: 2px solid $navbarBackgroundColor;
+  }
+
+  button {
+    border: 2px solid $navbarBackgroundColor;  
+  }
+}
+
 @media screen and (min-width: 1200px) {
   .location-search {
     display: flex;
     justify-content: center;
+    width: 30%;
   }
 }
