@@ -27,13 +27,13 @@ a:hover {
 @media screen and (min-width: 35em) {
   .page-header {
     background: url(/img/dog-header.jpg) no-repeat;
+    background-size: cover;
     background-position: top right;
   }
 }
 
 @media screen and (min-width: 70em) {
   .page-header {
-    background: url(/img/desktop-dog-header.jpg) no-repeat;
     background-position: center top;
     height: 20em;
   }
