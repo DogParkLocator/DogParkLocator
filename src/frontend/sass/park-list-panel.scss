@@ -13,17 +13,15 @@
 
     ul {
       padding-left: 0;
-    }
-
-    article {
-      display: flex;
-
-      main {
-        width: 70%;
-      }
+      list-style: none;
     }
   }
 }
+
+.park-description {
+  padding: 0
+}
+
 .hidden {
   display: none;
 }

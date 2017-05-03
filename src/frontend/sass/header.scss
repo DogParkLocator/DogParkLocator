@@ -21,52 +21,20 @@ h2 {
 }
 
 a:hover {
-  background-color: #003319;
   transition: all 1s linear;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 35em) {
   .page-header {
-    padding-top: 5em;
     background: url(/img/dog-header.jpg) no-repeat;
-    margin: 0;
     background-size: cover;
     background-position: top right;
   }
-
-  h1 {
-    color: $headerFontColor;
-  }
-
-  h2 {
-    color: $headerFontColor;
-    font-size: 1em;
-  }
-
-  .navbar {
-    list-style: none;
-    background-color: #003319;
-  }
-
-  a:hover {
-    background-color: $navbarBackgroundColor;
-    transition: all 1s linear;
-  }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 70em) {
   .page-header {
-    background: url(/img/desktop-dog-header.jpg) no-repeat;
-    background-size: cover;
-    background-position: top center;
+    background-position: center top;
     height: 20em;
-
-    h1 {
-      color: $headerFontColor;
-    }
-
-    h2 {
-      color: $headerFontColor;
-    }
   }
 }
