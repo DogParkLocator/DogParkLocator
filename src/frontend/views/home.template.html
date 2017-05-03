@@ -1,16 +1,14 @@
 <p ng-cloak ng-show='parksCtrl.message' ng-class='{ alert:true, "alert-warning":parksCtrl.hasError }'>{{parksCtrl.message}}</p>
-<section class='location-search'>
-  <form class='form-group col-lg-8' ng-submit='parksCtrl.getAllParks(parksCtrl.searchProperty, parksCtrl.searchValue)'>
-    <label for='search-by'>Search by: </label>
-    <select name="search-by" placeholder="Search by:" ng-model="parksCtrl.searchProperty">
-      <option value="name">Name</option>
-      <option value="street">Street</option>
-      <option value="city">City</option>
-      <option value="state">State</option>
-      <option value="zipcode">Zip Code</option>
-    </select>
-    <input name='searchValue' type='text' class='form-control' ng-model='parksCtrl.searchValue' placeholder='Enter your search query'>
-    <button type='submit' class='form-control btn btn-default' value='Search'>Find the Barks!</button>
-  </form>
-</section>
+<form class='location-search' class='form-group col-lg-8' ng-submit='parksCtrl.getAllParks(parksCtrl.searchProperty, parksCtrl.searchValue)'>
+  <label class='search-by' for='search-by'>Search by: </label>
+  <select class='search-select' class='form-control' name="search-by" placeholder="Search by:" ng-model="parksCtrl.searchProperty">
+    <option value="name">Name</option>
+    <option value="street">Street</option>
+    <option value="city">City</option>
+    <option value="state">State</option>
+    <option value="zipcode">Zip Code</option>
+  </select>
+  <input name='searchValue' type='text' class='form-control' ng-model='parksCtrl.searchValue' placeholder='Enter your search query'>
+  <button type='submit' class='form-control btn btn-default' value='Search'>Find the Barks!</button>
+</form>
 <map park-objects='parksCtrl.parks' center='parksCtrl.center'></map>
