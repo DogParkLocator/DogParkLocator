@@ -16,6 +16,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     copy: {
       html: {
         files: [
@@ -32,8 +33,6 @@ module.exports = function(grunt) {
             dest: 'build/'
           }
         ]
-
-
       },
       allImages: {
         files: [
@@ -62,6 +61,7 @@ module.exports = function(grunt) {
         ]
       }
     },
+
     sass: {
       allSASS: {
         files: {
@@ -69,12 +69,14 @@ module.exports = function(grunt) {
         }
       }
     },
+
     concat: {
       dist: {
         src: ['src/frontend/js/park.module.js', 'src/frontend/js/**/*.js'],
         dest: 'build/js/app.js'
       }
     },
+
     babel: {
       all: {
         options: {
@@ -86,31 +88,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    karma: {
-      all: {
-        options : {
-          frameworks: ['mocha', 'chai'],
-          browsers: ['Chrome'],
-          singleRun: true,
-          preprocessors: {
-            'src/frontend/js/**/*.js': ['coverage']
-          },
-          reporters: ['dots', 'coverage'],
-          coverageReporter: {
-            type: 'text-summary'
-          },
-          files: [
-            'node_modules/angular/angular.js',
-            'node_modules/angular-mocks/angular-mocks.js',
-            'node_modules/angular-ui-router/release/angular-ui-router.js',
-            'src/frontend/js/park.module.js',
-            'src/frontend/js/**/*.js',
-            'tests/**/*.spec.js'
-          ]
 
-        }
-      }
-    },
     watch: {
       css: {
         files:['src/frontend/sass/*.scss'],
@@ -126,14 +104,14 @@ module.exports = function(grunt) {
       }
     }
   });
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-babel');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-karma');
+
+  // grunt.loadNpmTasks('grunt-contrib-copy');
+  // grunt.loadNpmTasks('grunt-contrib-sass');
+  // grunt.loadNpmTasks('grunt-contrib-watch');
+  // grunt.loadNpmTasks('grunt-contrib-concat');
+  // grunt.loadNpmTasks('grunt-babel');
+  // grunt.loadNpmTasks('grunt-contrib-clean');
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('default', ['jshint','karma','clean', 'concat', 'babel', 'copy', 'sass']);
+  grunt.registerTask('default', ['jshint','clean', 'concat', 'babel', 'copy', 'sass']);
 };
