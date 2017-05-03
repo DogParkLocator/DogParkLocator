@@ -1,13 +1,17 @@
 likes {
   float: right;
   font-size: 1.5em;
+  display: flex;
 
-  p {
+  section {
     display: inline;
-    margin-right: .5em;
-  }
-}
 
-.thumbs {
-  margin-right: .5em;
+    aside {
+      margin-right: .5em;
+    }
+
+    p {
+      margin-right: .5em;
+    }
+  }
 }

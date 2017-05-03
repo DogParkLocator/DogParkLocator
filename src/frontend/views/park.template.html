@@ -1,4 +1,4 @@
-<section class='parks-list panel panel-default'>
+<section ng-controller='LoginController as loginCtrl' class='parks-list panel panel-default'>
   <header class='panel-heading'>
     <main>
       <strong>Bark</strong>
@@ -13,14 +13,12 @@
     </main>
   </header>
   <article ng-controller='ParksController as parksCtrl' class='panel-body'>
-    <main ng-controller='LoginController as loginCtrl' class='description-section'>
+    <main class='description-section'>
       <strong>Description</strong>
       <p>{{park.description}}</p>
       <button class='btn btn-danger col-xs-3' ng-show='loginCtrl.isLoggedIn()' ng-click='parksCtrl.deleteAPark(park._id)'>Delete
       </button>
     </main>
-    <main>
-      <likes park='park' class='likes'></likes>
-    </main>
+    <likes park='park' class='likes'></likes>
   </article>
 </section>
