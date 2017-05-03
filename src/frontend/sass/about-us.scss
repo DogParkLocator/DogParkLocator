@@ -1,12 +1,11 @@
 .about-us {
-  background-color: #CCFFCC;
-
   .panel-heading {
-  background-color: #003319;
+    background-color: #003319;
     height: 60px;
     display: flex;
     margin: 0;
     font-size: 20px;
+    color: $headerFontColor;
   }
 
   .panel-body {

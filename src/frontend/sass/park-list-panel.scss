@@ -1,8 +1,8 @@
-.parks-list{
+.parks-list {
   .panel-heading {
     background-color: #003319;
     display: flex;
-  }
+    color: $headerFontColor;
 
     main {
       width: 50%;
