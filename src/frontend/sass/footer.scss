@@ -2,6 +2,10 @@ footer {
   height: 1.5em;
   background-color: $navbarBackgroundColor;
   color: $headerFontColor;
+
+  p {
+    margin: .5em;
+  }
 }
 
 @media screen and (min-width: 35em) {
@@ -9,7 +13,7 @@ footer {
     height: 2em;
 
     p {
-      margin: .5em;
+      padding-top: .3em;
     }
   }
 }
@@ -19,7 +23,7 @@ footer {
     height: 3em;
 
     p {
-      margin: 1em;
+      padding-top: .8em;
     }
   }
 }
