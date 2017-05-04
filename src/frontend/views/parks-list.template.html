@@ -1,5 +1,6 @@
 <p ng-cloak ng-show='parksCtrl.message' ng-class='{ alert:true, "alert-warning":parksCtrl.hasError }'>{{parksCtrl.message}}</p>
-<form class='form-group col-lg-8 location-search' ng-submit='parksCtrl.getAllParks(parksCtrl.searchProperty, parksCtrl.searchValue)'>
+<section class='location-search'>
+  <form class='form-group col-lg-8' ng-submit='parksCtrl.getAllParks(parksCtrl.searchProperty, parksCtrl.searchValue)'>
   <label class='search-by' for='search-by'>Search by: </label>
   <select class='form-control' name="search-by" placeholder="Search by:" ng-model="parksCtrl.searchProperty">
     <option value="name">Name</option>
@@ -11,6 +12,7 @@
   <input type='text' class='form-control' ng-model='parksCtrl.searchValue' placeholder='Enter your search query'>
   <button type='submit' class='form-control btn btn-success' value='Search'>Find the Barks!</button>
 </form>
+</section>
 <main>
   <park ng-repeat='park in parksCtrl.parks' park='park'></park>
 </main>
