@@ -17,15 +17,14 @@
     border: 2px solid $navbarBackgroundColor;
   }
 }
-
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 35em) {
   .location-search {
-    display: flex;
-    justify-content: center;
-    width: 42%;
+    width: 50%;
+  }
+}
 
-    form {
-      width: 100%;
-    }
+@media screen and (min-width: 70em) {
+  .location-search {
+    width: 30%;
   }
 }
