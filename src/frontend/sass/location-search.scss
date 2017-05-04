@@ -1,5 +1,4 @@
 .location-search {
-  
   label {
     color: #FFFFFF;
   }
@@ -18,15 +17,10 @@
     border: 2px solid $navbarBackgroundColor;
   }
 }
+
 @media screen and (min-width: 35em) {
   .location-search {
     width: 50%;
-  }
-}
-
-@media screen and (min-width: 70em) {
-  .location-search {
-  width: 50%;
   }
 }
 
@@ -35,15 +29,3 @@
     width: 30%;
   }
 }
-
-// @media screen and (min-width: 1200px) {
-//   .location-search {
-//     display: flex;
-//     justify-content: center;
-//     width: 42%;
-//
-//     form {
-//       width: 100%;
-//     }
-//   }
-// }
