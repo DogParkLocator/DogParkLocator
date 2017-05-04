@@ -21,6 +21,9 @@
     text-shadow: 2px 2px 3px black;
 
   }
+  .buttons {
+    padding-left: 2em;
+  }
 }
 
 .navbar {
@@ -52,5 +55,15 @@ a{
   .page-header {
     background-position: center top;
     height: 20em;
+    h1 {
+      font-size: 5em;
+    }
+    h2 {
+      font-size: 2em;
+    }
+    .buttons {
+      padding-left: 4em;
+    }
   }
+
 }
