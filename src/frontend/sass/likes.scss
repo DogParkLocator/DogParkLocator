@@ -4,10 +4,13 @@ likes {
   border: 2px solid $navbarBackgroundColor;
   height: 3em;
   padding: 0.3em 0 3.1em 0.5em;
+  border-radius: 15px;
+  background-color: #51BAF2;
 
   section {
     aside {
       margin-right: .5em;
+      color: white;
     }
 
     p {
@@ -23,11 +26,5 @@ likes {
 
   .thumbs-up {
     width: 2.5em;
-  }
-}
-
-@media screen and (min-width: 70em) {
-  .thumbs-up {
-    // width: 4em;
   }
 }
