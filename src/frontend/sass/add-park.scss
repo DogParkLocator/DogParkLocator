@@ -11,9 +11,11 @@
     font-size: 2em;
     padding-bottom: 2.8em;
     color: $headerFontColor;
+    border: 3px solid $navbarBackgroundColor;
   }
 
   .panel-body {
     background-color: white;
+    border: 3px solid $navbarBackgroundColor;
   }
 }
