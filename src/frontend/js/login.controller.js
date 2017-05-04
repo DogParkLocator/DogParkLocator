@@ -5,6 +5,7 @@
   .controller('LoginController', LoginController);
 
   LoginController.$inject = ['$scope'];
+
   function LoginController($scope){
     let vm = this;
 
@@ -22,6 +23,7 @@
         $scope.$apply();
       });
     };
+
     vm.isLoggedIn = function isLoggedIn(){
       return !!localStorage.getItem('token');
     };

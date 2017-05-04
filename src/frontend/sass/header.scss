@@ -4,15 +4,23 @@
   margin: 0;
   background-size: cover;
   background-position: center top;
-}
 
-h1 {
-  color: $headerFontColor;
-}
+  h1 {
+    color: $headerFontColor;
+    font-family: 'Indie Flower', cursive;
+    padding-left: 0.7em;
+    text-shadow: 2px 2px 3px black;
 
-h2 {
-  color: $headerFontColor;
-  font-size: 1em;
+  }
+
+  h2 {
+    color: $headerFontColor;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1em;
+    padding-left: 2em;
+    text-shadow: 2px 2px 3px black;
+
+  }
 }
 
 .navbar {
