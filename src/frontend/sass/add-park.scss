@@ -11,4 +11,9 @@
   .panel-body {
     border: 3px solid $panelBorderColor;
   }
+
+  .btn-success {
+    margin-top: 1.5em;
+    border: 3px solid $navbarBackgroundColor;
+  }
 }
