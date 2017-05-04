@@ -1,14 +1,14 @@
 likes {
   font-size: 1.5em;
   display: flex;
-  border: 2px solid $navbarBackgroundColor;
+  border: 2px solid $likesBorderColor;
   height: 3em;
   padding: 0.3em 0 3.1em 0.5em;
   border-radius: 15px;
-  background-color: #51BAF2;
+  background-color: $likesBackgroundColor;
   aside {
     margin-right: .5em;
-    color: white;
+    color: $likesColor;
   }
   p {
     margin-right: .5em;
