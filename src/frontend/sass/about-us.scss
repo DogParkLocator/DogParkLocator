@@ -1,4 +1,6 @@
 .about-us {
+  margin-bottom: 30em;
+
   .panel-heading {
     background-color: #003319;
     height: 60px;
@@ -8,8 +10,6 @@
     color: $headerFontColor;
     border: 3px solid $navbarBackgroundColor;
   }
-
-  margin-bottom: 30em;
 
   .panel-body {
     margin-bottom: 0;

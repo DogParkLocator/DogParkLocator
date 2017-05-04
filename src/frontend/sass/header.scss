@@ -21,6 +21,7 @@
     text-shadow: 2px 2px 3px black;
 
   }
+
   .buttons {
     padding-left: 2em;
   }
@@ -32,14 +33,13 @@
   font-family: 'Indie Flower', cursive;
   text-shadow: 2px 2px 3px black;
   font-size: 1.5em;
-
 }
 
 a:hover {
   transition: all 1s linear;
 }
 
-a{
+a {
   color: $headerFontColor;
 }
 
@@ -65,5 +65,4 @@ a{
       padding-left: 4em;
     }
   }
-
 }
