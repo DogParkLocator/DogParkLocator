@@ -4,7 +4,6 @@
   margin: 0;
   background-size: cover;
   background-position: center top;
-  margin-top: -0.2em;
 
   h1 {
     color: $headerFontColor;
@@ -32,6 +31,7 @@
   font-family: 'Indie Flower', cursive;
   text-shadow: 2px 2px 3px black;
   font-size: 1.5em;
+  margin-top: -0.2em;
 
   ul li {
     a:hover {
