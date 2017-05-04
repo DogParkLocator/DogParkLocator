@@ -30,7 +30,6 @@
       if (typeof(park._id) !== 'string' || !park._id.length) {
         return Promise.reject('Problem liking park: no park specified, or invalid id');
       }
-
       if (typeof(park.likes) !== 'number') {
         return Promise.reject('Problem liking park: park.likes is NaN');
       }

@@ -22,6 +22,10 @@
   .location-search {
     display: flex;
     justify-content: center;
-    width: 30%;
+    width: 42%;
+
+    form {
+      width: 100%;
+    }
   }
 }
