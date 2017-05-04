@@ -5,16 +5,16 @@
 
   select {
     margin-bottom: .3em;
-    border: 2px solid $navbarBackgroundColor;
+    border: 2px solid $searchFieldBorder;
   }
 
   input {
     margin-bottom: .3em;
-    border: 2px solid $navbarBackgroundColor;
+    border: 2px solid $searchFieldBorder;
   }
 
   button {
-    border: 2px solid $navbarBackgroundColor;
+    border: 2px solid $searchFieldBorder;
   }
 }
 
