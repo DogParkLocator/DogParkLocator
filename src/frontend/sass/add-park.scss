@@ -1,18 +1,14 @@
 .add-park {
-  background-color: #CCFFCC;
-
   .panel-heading {
     font-family: 'Indie Flower', cursive;
     text-shadow: 2px 2px 3px black;
-    background-color: #003319;
+    background-color: $panelHeaderBackgroundColor;
     margin: 0;
     font-size: 2em;
-    color: $headerFontColor;
-    border: 3px solid $navbarBackgroundColor;
+    color: $panelHeaderFontColor;
+    border: 3px solid $panelBorderColor;
   }
-
   .panel-body {
-    background-color: white;
-    border: 3px solid $navbarBackgroundColor;
+    border: 3px solid $panelBorderColor;
   }
 }
