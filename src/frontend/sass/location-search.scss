@@ -17,15 +17,10 @@
     border: 2px solid $navbarBackgroundColor;
   }
 }
+
 @media screen and (min-width: 35em) {
   .location-search {
     width: 50%;
-  }
-}
-
-@media screen and (min-width: 70em) {
-  .location-search {
-  width: 50%;
   }
 }
 
