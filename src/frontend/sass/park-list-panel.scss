@@ -14,8 +14,19 @@
     }
   }
 
-  .panel-body main button {
-    margin-top: 2em;
+  .panel-body {
+    display: flex;
+    justify-content: space-between;
+
+    main {
+      margin-right: 1em;
+      width: 100%;
+    }
+
+    main button {
+      margin-top: 2em;
+      width: 5em;
+    }
   }
 }
 
