@@ -28,7 +28,7 @@
 
 .navbar {
   list-style: none;
-  background-color: #003319;
+  background-color: $navbarBackgroundColor;
   font-family: 'Indie Flower', cursive;
   text-shadow: 2px 2px 3px black;
   font-size: 1.5em;
@@ -40,7 +40,7 @@ a:hover {
 }
 
 a{
-  color: $headerFontColor;
+  color: $navbarFontColor;
 }
 
 @media screen and (min-width: 35em) {
