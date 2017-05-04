@@ -18,9 +18,15 @@
   }
 }
 @media screen and (min-width: 35em) {
-.location-search {
-  width: 50%;
+  .location-search {
+    width: 50%;
+  }
 }
+
+@media screen and (min-width: 70em) {
+  .location-search {
+  width: 50%;
+  }
 }
 
 @media screen and (min-width: 70em){
