@@ -2,18 +2,15 @@
   margin-bottom: 30em;
 
   .panel-heading {
-    background-color: #003319;
-    height: 60px;
-    display: flex;
-    font-size: 20px;
+    background-color: $panelHeaderBackgroundColor;
+    font-size: 2em;
     margin: 0;
-    color: $headerFontColor;
-    border: 3px solid $navbarBackgroundColor;
+    color: $panelHeaderFontColor;
+    border: 3px solid $panelBorderColor;
   }
 
   .panel-body {
     margin-bottom: 0;
-    background-color: #FFFFFF;
-    border: 3px solid $navbarBackgroundColor;
+    border: 3px solid $panelBorderColor;
   }
 }
