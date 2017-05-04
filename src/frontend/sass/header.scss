@@ -10,7 +10,6 @@
     font-family: 'Indie Flower', cursive;
     padding-left: 0.7em;
     text-shadow: 2px 2px 3px black;
-
   }
 
   h2 {
@@ -19,8 +18,8 @@
     font-size: 1em;
     padding-left: 2em;
     text-shadow: 2px 2px 3px black;
-
   }
+
   .buttons {
     padding-left: 2em;
   }
@@ -33,14 +32,15 @@
   text-shadow: 2px 2px 3px black;
   font-size: 1.5em;
 
-}
+  ul li {
+    a:hover {
+      transition: all 1s linear;
+    }
+    a {
+      color: $headerFontColor;
+    }
+  }
 
-a:hover {
-  transition: all 1s linear;
-}
-
-a{
-  color: $navbarFontColor;
 }
 
 @media screen and (min-width: 35em) {
@@ -55,15 +55,17 @@ a{
   .page-header {
     background-position: center top;
     height: 20em;
+
     h1 {
       font-size: 5em;
     }
+
     h2 {
       font-size: 2em;
     }
+
     .buttons {
       padding-left: 4em;
     }
   }
-
 }

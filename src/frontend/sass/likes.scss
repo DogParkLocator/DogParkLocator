@@ -1,8 +1,9 @@
 likes {
   font-size: 1.5em;
   display: flex;
-  justify-content: flex-end;
-  margin-top: -.5em;
+  border: 2px solid $navbarBackgroundColor;
+  height: 3em;
+  padding: 0.3em 0 3.1em 0.5em;
 
   section {
     aside {
@@ -16,13 +17,17 @@ likes {
 }
 
 @media screen and (min-width: 35em) {
+  likes {
+    padding: 0.4em 0 3.2em 0.5em;
+  }
+
   .thumbs-up {
-    width: 3em;
+    width: 2.5em;
   }
 }
 
 @media screen and (min-width: 70em) {
   .thumbs-up {
-    width: 4em;
+    // width: 4em;
   }
 }
