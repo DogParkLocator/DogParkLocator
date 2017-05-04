@@ -1,16 +1,16 @@
 .parks-list {
-  border: 3px solid $navbarBackgroundColor;
+  border: 3px solid $panelBorderColor;
   border-radius: 10px;
 
   .panel-heading {
-    background-color: #003319;
+    background-color: $panelHeaderBackgroundColor;
     display: flex;
-    color: $headerFontColor;
+    color: $panelHeaderFontColor;
 
     main {
       width: 50%;
     }
-
+    
     ul {
       padding-left: 0;
       list-style: none;
