@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
 likes {
   font-size: 1.5em;
   display: flex;
@@ -10,10 +11,12 @@ likes {
   padding: 0.3em 0 3.1em 0.5em;
   border-radius: 15px;
   background-color: $likesBackgroundColor;
+
   aside {
     margin-right: .5em;
     color: $likesColor;
   }
+  
   p {
     margin-right: .5em;
   }
@@ -23,6 +26,7 @@ likes {
   likes {
     padding: 0.4em 0 3.2em 0.5em;
   }
+
   .thumbs-up {
     width: 2.5em;
   }
