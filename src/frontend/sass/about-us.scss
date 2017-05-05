@@ -1,7 +1,6 @@
 .about-us {
   margin-bottom: 30em;
   border: $panelBorderColor;
-
   .panel-heading {
     background-color: $panelHeaderBackgroundColor;
     font-size: 2em;
@@ -9,7 +8,6 @@
     color: $panelHeaderFontColor;
     border: 3px solid $panelBorderColor;
   }
-
   .panel-body {
     margin-bottom: 0;
     border: 3px solid $panelBorderColor;
