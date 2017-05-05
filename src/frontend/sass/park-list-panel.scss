@@ -16,20 +16,25 @@
       list-style: none;
     }
   }
+}
+.mapMarkerDescription {
+  display: flex;
+  justify-content: space-between;
+}
+.parkListPanelBody {
+  display: flex;
+  justify-content: flex-end;
 
-  .panel-body {
-    display: flex;
-    justify-content: space-between;
+  main {
+    margin-right: 1em;
+    width: 80%;
+  }
 
-    main {
-      margin-right: 1em;
-    }
-
-    main button {
-      width: 5em;
-    }
+  main button {
+    width: 5em;
   }
 }
+
 
 .hidden {
   display: none;
