@@ -16,20 +16,28 @@
       list-style: none;
     }
   }
-
-  .panel-body {
-    display: flex;
-    justify-content: space-between;
-
-    main {
-      margin-right: 1em;
-    }
-
-    main button {
-      width: 5em;
-    }
+}
+.mapMarkerDescription {
+  display: flex;
+  justify-content: space-between;
+  main{
+    margin-right: 3em;
   }
 }
+.parkListPanelBody {
+  display: flex;
+  justify-content: flex-end;
+
+  main {
+    margin-right: 5em;
+    width: 80%;
+  }
+
+  main button {
+    width: 5em;
+  }
+}
+
 
 .hidden {
   display: none;
