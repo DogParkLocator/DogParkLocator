@@ -20,6 +20,9 @@
 .mapMarkerDescription {
   display: flex;
   justify-content: space-between;
+  main{
+    margin-right: 3em;
+  }
 }
 .parkListPanelBody {
   display: flex;
