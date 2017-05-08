@@ -17,7 +17,7 @@ function addressString(parkObject) {
 * @param  {Object}   req  the request object received from the frontend
 * @param  {Object}   res  the response object to return to the frontend
 * @param  {Function} next the middleware to proceed to next, if called
-* @return {Void}
+* @return {Promise}       the response resolution of the find request, or of the middle-ware called next
 */
 parksRouter.get('/:id', function getAPark(req, res, next) {
   if (typeof(req.params.id) !== 'string' || req.params.id.length === 0) {
@@ -47,7 +47,7 @@ parksRouter.get('/:id', function getAPark(req, res, next) {
 * @param  {Object}   req  the request object received from the frontend
 * @param  {Object}   res  the response object to return to the frontend
 * @param  {Function} next the middleware to proceed to next, if called
-* @return {Void}
+* @return {Promise}       the response resolution of the find request, or of the middle-ware called next
 */
 parksRouter.get('/', function getAllParks(req, res, next) {
   let queryParams = {};
@@ -89,11 +89,11 @@ parksRouter.get('/', function getAllParks(req, res, next) {
 });
 
 /**
-* finds the park with the id matching the argument passed in req
+* updates the park with the id matching the argument passed in req. The properties and values to update are passed in the request.
 * @param  {Object}   req  the request object received from the frontend
 * @param  {Object}   res  the response object to return to the frontend
 * @param  {Function} next the middleware to proceed to next, if called
-* @return {Void}
+* @return {Promise}       the response resolution of the update request, or of the middle-ware called next
 */
 parksRouter.patch('/:id', function updateAPark(req, res, next) {
   if (typeof(req.params.id) !== 'string' || req.params.id.length === 0) {
@@ -129,10 +129,10 @@ parksRouter.patch('/:id', function updateAPark(req, res, next) {
 });
 
 /** Adds a park to the database
-* @param {Object}     req  the request object received from the frontend
-* @param {Object}     res  the response object to return to the frontend
-* @param {Function}   next the middleware to proceed to next, if called
-* @return {void}
+* @param {Object}    req  the request object received from the frontend
+* @param {Object}    res  the response object to return to the frontend
+* @param {Function}  next the middleware to proceed to next, if called
+* @return {Promise}       the response resolution of the add park request, or of the middle-ware called next
 */
 parksRouter.post('/', function addAPark(req, res, next) {
   if(!req.body.name || !req.body.street || !req.body.city || !req.body.state || !req.body.zipcode) {
@@ -200,11 +200,11 @@ parksRouter.post('/', function addAPark(req, res, next) {
 });
 
 /**
-* finds the park with the id matching the argument passed in req
+* finds the park with the id matching the argument passed in req, and deletes it
 * @param  {Object}   req  the request object received from the frontend
 * @param  {Object}   res  the response object to return to the frontend
 * @param  {Function} next the middleware to proceed to next, if called
-* @return {Void}
+* @return {Void}          the response resolution of the delete request, or of the middle-ware called next
 */
 parksRouter.delete('/:id', function deleteAPark(req, res, next) {
   if (typeof(req.params.id) !== 'string' || req.params.id.length === 0) {
