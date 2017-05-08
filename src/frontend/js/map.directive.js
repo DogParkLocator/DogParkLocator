@@ -37,7 +37,7 @@
       let parkFinder = new google.maps.Geocoder();
 
       /**
-      * removes all parkMarkers from the map
+      * removes all parkMarkers from the map, and from the parkMarkers[]
       * @return {void}
       */
       function clearParkMarkers() {
@@ -47,7 +47,10 @@
         parkMarkers = [];
       }
 
-      // adds all parks to the map when the array of parkObjects changes
+      /**
+       * adds all parks as park markers to the map when the array of parkObjects on scope changes
+       * @return {void}
+       */
       scope.$watch('parkObjects', function addAllParksToMap() {
         clearParkMarkers();
         let parkMapBounds = new google.maps.LatLngBounds();
@@ -55,6 +58,10 @@
           console.log('stopped adding pins because no parks');
         }
         else {
+          /**
+           * adds a park marker for each park object on scope
+           * @param {Object} parkObject [description]
+           */
           scope.parkObjects.forEach(function addMarker(parkObject) {
             if (!parkObject.latitude || !parkObject.longitude) {
               console.error('park does not have a latitude or longitude', parkObject);
