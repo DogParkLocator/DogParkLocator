@@ -15,7 +15,12 @@
     vm.center = {lat: 38.899, lng: -77.032}; // the iron yard location. Replace with geolocation, when implemented
     vm.message = '';
     vm.hasError = false;
-
+    /**
+     * Adds a new park from the user and adds a park to the bottom of the parks list page.
+     * Uses ParkService for actual persistence of data.
+     * @param  {Object} park User inputted data needed to create a park
+     * @return {void}
+     */
     vm.createPark = function createPark(park) {
       vm.hasError = false;
       ParksService.createPark(park)
@@ -30,7 +35,11 @@
         vm.hasError = true;
       });
     };
-
+    /**
+     * Deletes a park from our page
+     * @param  {String} id The park ID to retrieve in order to delete
+     * @return {void}
+     */
     vm.deleteAPark = function deleteAPark(id) {
       vm.hasError = false;
       return ParksService.deleteAPark(id)
@@ -45,7 +54,12 @@
         console.error(err);
       });
     };
-
+    /**
+     * Gets a list of all parks from the API
+     * @param  {String} property criteria by which to search
+     * @param  {String} value    search parameter
+     * @return {Void}         
+     */
     vm.getAllParks = function getAllParks(property, value) {
       vm.hasError = false;
       return ParksService.getAllParks(property, value)
@@ -70,26 +84,5 @@
       });
     };
     vm.getAllParks();
-
-    // vm. getParkById = function getParkById(id) {
-    //   if (typeof(id) !== 'string' || id.length === 0) {
-    //     return; // should add error log or return error
-    //   }
-    //   ParksService.getParkById(id)
-    //   .then(function addParkToScope(park) {
-    //     vm.park = park;
-    //   })
-    //   .catch(function handleError(err){
-    //     console.error(err);
-    //     if (err.status === 404) {
-    //       vm.hasError = true;
-    //       vm.errorMessage = 'Could not find the park with that id';
-    //     }
-    //     else {
-    //       vm.hasError = true;
-    //       vm.errorMessage = 'Unknown error from server';
-    //     }
-    //   });
-    // };
   }
 }());

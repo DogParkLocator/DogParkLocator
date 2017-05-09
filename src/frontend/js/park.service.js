@@ -6,8 +6,18 @@
 
   ParksService.$inject = ['$http'];
 
+  /**
+   * Creates a new park service singleton
+   * @param {function} $http        the service for making ajax calls
+   * @param {Object} ParksService   the service's API methods
+   */
   function ParksService($http, ParksService) {
-
+    /**
+     * makes an http request for parks data from our API
+     * @param  {String}  [sortBy='likes']  sorts parks according to likes
+     * @param  {Boolean} [ascending=false] makes a decending order
+     * @return {Promise}                   all pdark data requested from API
+     */
     function getAllParks(property, value, sortBy = 'likes', ascending = false) {
       let params = {};
       params.sortBy = sortBy;
@@ -22,10 +32,15 @@
         params: params
       })
       .then(function handleResponse(response) {
+        console.log(response);
         return response.data;
       });
     }
-
+    /**
+     * Updates likes data for each park in the API
+     * @param  {Object} park data for each park
+     * @return {Promise}       request to update likes data
+     */
     function updateLikes(park) {
       if (typeof(park._id) !== 'string' || !park._id.length) {
         return Promise.reject('Problem liking park: no park specified, or invalid id');
@@ -48,7 +63,11 @@
         return response.data;
       });
     }
-
+    /**
+     * Updates dislikes data for each park
+     * @param  {Object} park data for each park
+     * @return {Promise}       request to update dislikes data
+     */
     function updateDislikes(park) {
       if (typeof(park._id) !== 'string' || !park._id.length) {
         return Promise.reject('Problem disliking park: no park specified, or invalid id');
@@ -71,7 +90,11 @@
         return response.data;
       });
     }
-
+    /**
+     * Creates a new object containing data about new park to be saved to our API
+     * @param  {Object} park user supplied data
+     * @return {Promise}       request to post new park data to API
+     */
     function createPark(park) {
       if (!park.name || !park.street || !park.city || !park.state || !park.zipcode) {
         return Promise.reject('required fields not filled out');
@@ -103,6 +126,11 @@
       });
     }
 
+    /**
+     * delete data for park in API
+     * @param  {String} id ID number associated with park
+     * @return {$http}    request to delete park associated with id
+     */
     function deleteAPark(id) {
       if (typeof(id) !== 'string' || !id.length) {
         return Promise.reject('invalid id for park to delete');
