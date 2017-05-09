@@ -148,5 +148,155 @@
     "openHours": "6am",
     "closingHours": "10pm",
     "description": "This quaint little park is not large, but perfect for smaller dogs. Some have heard locals call it the puppy park. For larger dogs, Duke Street Dog Park across the street is a more appropriate place to play."
+  },
+  {
+    "name": "Meridian Hill Park",
+    "street": "2400 15th St NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20009",
+    "openHours": "7am",
+    "closingHours": "7pm",
+    "description": "Meridian Hill Park is a structured urban park located in the Washington, D.C. neighborhood of Columbia Heights; it also abuts the nearby neighborhood of Adams Morgan. The park was designed and built between 1912 and 1940."
+  },
+  {
+    "name": "Virginia Avenue Park",
+    "street": "1098 9th St SE",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20003",
+    "openHours": "Sunrise",
+    "closingHours": "Sunset",
+    "description": "Rolling neighborhood green space featuring a community garden, dog run & picnic tables. Some owners have complained the park is not very easily accessible."
+  },
+  {
+    "name": "Lincoln Park",
+    "street": "East Capitol St SE & 12th St SE",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20003",
+    "openHours": "5am",
+    "closingHours": "12am",
+    "description": "Open public green space with statues of Abraham Lincoln & civil rights activist Mary McLeod Bethune."
+  },
+  {
+    "name": "Montrose Park",
+    "street": "3000 R St NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20007",
+    "openHours": "Sunrise",
+    "closingHours": "Sunset",
+    "description": "The Montrose Park is a public park, owned by the federal government, located in the 3000 block of R Street, Northwest, Washington, D.C., in the Georgetown neighborhood. It is located between Dumbarton Oaks Park, and Oak Hill Cemetery."
+  },
+  {
+    "name": "Stead Park",
+    "street": "1625 P St NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20036",
+    "openHours": "Sunrise",
+    "closingHours": "Sunset",
+    "description": "Stead Park is a 1.5-acre municipal park located in the Dupont Circle neighborhood of Northwest Washington, D.C"
+  },
+  {
+    "name": "Mitchell Park",
+    "street": "23rd St NW & S St NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20008",
+    "openHours": "Sunrise",
+    "closingHours": "Sunset",
+    "description": "A neighborhood park with a field & court for multiple sports, plus gardens & walking paths."
+  },
+  {
+    "name": "Stead Park",
+    "street": "2nd St SE & F St SE",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20003",
+    "openHours": "12am",
+    "closingHours": "12am",
+    "description": "This recreational area offers a playground, picnic spots & tennis, basketball & bocce courts."
+  },
+  {
+    "name": "Battery Kemble Park",
+    "street": "Chain Bridge Rd NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20016",
+    "openHours": "12am",
+    "closingHours": "12am",
+    "description": "Battery Kemble Park is a park in Northwest Washington D.C., administered by the National Park Service. Battery Kemble was a Union Army defensive site during the Civil War."
+  },
+  {
+    "name": "Volta Park",
+    "street": "1555 34th St NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20036",
+    "openHours": "1pm",
+    "closingHours": "8pm",
+    "description": "Lush gardens, a pool & tennis & basketball courts mark this full-block park that dates to 1769."
+  },
+  {
+    "name": "The Park at LeDroit",
+    "street": "Elm St NW & 3rd St NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20001",
+    "openHours": "Sunrise",
+    "closingHours": "Sunset",
+    "description": "Quaint green space offering a playground, benches & walking paths, plus a fenced-in area for dogs."
+  },
+  {
+    "name": "Kalorama Recreation Center",
+    "street": "1865 Kalorama Rd NW",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20009",
+    "openHours": "Sunrise",
+    "closingHours": "Sunset",
+    "description": "3-acre park featuring a recreational center, community garden & green space in an urban setting."
+  },
+  {
+    "name": "Crispus Attucks Park",
+    "street": "23 U St NW, Washington",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20001",
+    "openHours": "12am",
+    "closingHours": "12am",
+    "description": "Known for its secluded feel, this popular urban park includes lots of green space, benches & trails."
+  },
+  {
+    "name": "Stanton Park",
+    "street": "23 U St NW, Washington",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20001",
+    "openHours": "12am",
+    "closingHours": "12am",
+    "description": "Known for its secluded feel, this popular urban park includes lots of green space, benches & trails."
+  },
+  {
+    "name": "Marion Park",
+    "street": "E St SE & 5th St SE",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20003",
+    "openHours": "12am",
+    "closingHours": "12am",
+    "description": "Marion Park is a public park named after Revolutionary War leader Francis Marion. It is located at 4th Street, 6th Street, and E Street, Southeast, Washington, D.C., in the Capitol Hill neighborhood."
+  },
+  {
+    "name": "The Yards Park",
+    "street": "355 Water St SE, Washington",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "20003",
+    "openHours": "7am",
+    "closingHours": "10pm",
+    "description": "Along a portion of the Anacostia Riverwalk, The Yards Parkt is a waterfront recreation area, boardwalk, and outdoor performance space. It features a popular, large water feature, and a dog run."
   }
 ];

@@ -9,8 +9,11 @@
   Map.$inject = ['$compile', '$rootScope'];
 
   /**
-  * Map directive constructor
-  */
+   * Map directive constructor
+   * @param  {Object} $compile   an angular built-in service that precompiles a web-content controlled by the directive
+   * @param  {Object} $rootScope an angular built-in service that provides access to the most global scope
+   * @return {Object}            provides parameters for the behavior of the directive
+   */
   function Map($compile, $rootScope) {
     return {
       restrict: 'E',
@@ -37,7 +40,7 @@
       let parkFinder = new google.maps.Geocoder();
 
       /**
-      * removes all parkMarkers from the map
+      * removes all parkMarkers from the map, and from the parkMarkers[]
       * @return {void}
       */
       function clearParkMarkers() {
@@ -47,7 +50,10 @@
         parkMarkers = [];
       }
 
-      // adds all parks to the map when the array of parkObjects changes
+      /**
+       * adds all parks as park markers to the map when the array of parkObjects on scope changes
+       * @return {void}
+       */
       scope.$watch('parkObjects', function addAllParksToMap() {
         clearParkMarkers();
         let parkMapBounds = new google.maps.LatLngBounds();
@@ -55,6 +61,10 @@
           console.log('stopped adding pins because no parks');
         }
         else {
+          /**
+           * adds a park marker to the map for each park object in parkObjects[] on scope
+           * @param {Object} parkObject an object conforming to the spec in Park.model.js.
+           */
           scope.parkObjects.forEach(function addMarker(parkObject) {
             if (!parkObject.latitude || !parkObject.longitude) {
               console.error('park does not have a latitude or longitude', parkObject);
@@ -76,6 +86,11 @@
 
               let element = $compile("<marker-content park='park'></marker-content>")(markerScope);
 
+              /**
+               * Creates an info window when a park marker is clicked. Populates the info window with data from the parkObject the parkMarker represents
+               * @param  {Object} event an event object
+               * @return {void}
+               */
               parkMarker.addListener('click', function parkClick(event) {
                 let parkInfoWindow = new google.maps.InfoWindow({
                   content: element[0].outerHTML
